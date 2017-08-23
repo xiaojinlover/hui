@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/mui.picker.all.css">
+		<title>慧人事</title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body id="setting-wdll-grzl"> 
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">个人资料</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-item">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="real_name" title="姓名"></span>
+						姓名
+					</a> 
+				</li>
+			</ul>
+			
+		
+			<div class="mui-table-view-divider"></div> 
+			<div class="mui-input-group">
+				<div class="mui-input-row mui-select">
+					<label>性别</label>
+					<select id="sex" >
+						<option>请选择</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</div>
+				<div class="mui-input-row mui-select">
+					<label>学历</label>
+					<select id="xue-li">
+						<option>请选择</option>
+						
+					</select>
+				</div>
+				<div class="mui-input-row mui-select">
+					<label>户口性质</label>
+					<select id="hu-ji-xing-zhi">
+						<option>请选择</option>
+						<option value="城镇">城镇</option>
+						<option value="农村">农村</option>
+					</select>
+				</div>
+				<div class="mui-input-row mui-select">
+					<label>婚姻状况</label>
+					<select id="hun-yin-zhuang-kuang">
+						<option>请选择</option>
+						<option value="已婚">已婚</option>
+						<option value="未婚">未婚</option>
+						<option value="离异">离异</option>
+					</select>
+				</div>
+			</div>
+			
+
+			<ul class="mui-table-view mui-table-view-item">
+				
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						民族
+						<span class="mui-badge" id="min_zu" title="民族"></span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="birthday" title="出生日期"></span> 出生日期
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="shen_fen_zheng" title="身份证号码"></span> 身份证号码
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="shen_fen_zheng_di_zhhi" title="身份证地址"></span> 身份证地址
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="xian_zhu_di_zhi" title="现住地址"> </span> 现住地址
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="lian-xi-dian-hua" title="联系电话"></span> 联系电话
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="email" title="邮箱"></span> 邮箱
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="qq" title="QQ"></span> QQ
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="jin_ji_lian_xi_ren" title="紧急联系人"></span> 紧急联系人
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="jin_ji_lian_xi_ren_dian_hua" title="紧急联系电话"></span> 紧急联系电话
+					</a>
+				</li>
+				<!--<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="kai_hu_hang" title="工资卡开户银行"></span> 工资卡开户银行
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="#">
+						<span class="mui-badge" id="gong_zi_ka_hao" title="工资卡卡号"></span> 工资卡卡号
+					</a>
+				</li>-->
+				
+				
+			</ul>
+			<div class="mui-content-padded">
+				<a class="mui-btn mui-btn-primary mui-btn-block btn-check-psw" href="ruzhi-wdll-jyjl">下一步：完善教育背景</a>
+			</div>
+			
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="dist/js/mui.picker.all.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+	<script src="build/ruzhi-wdll-grzl.js"></script> 
+	<script>
+		
+	</script>
+	
+</html>

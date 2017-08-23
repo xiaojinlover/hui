@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<title>慧人事</title>
+		
+	</head>  
+	<body id="daili"> 
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">代理商</h1>
+			<a class="mui-btn mui-btn-link mui-pull-right" id="kehu-list" href="daili-kehu-list" style="color: #fff;">客户</a>
+		</header> 
+		<div class="mui-content">	
+			<div class="daili-header mui-text-center">
+				<img src="images/test-head.png"/>
+				<p class="">东方不败</p>
+				<p class="size12">高级代理</p>
+				<a href="daili-zhaomu" class="button button-glow button-rounded button-highlight button-small">招募代理</a> <a href="daili-list" class="button button-glow button-rounded button-action button-small">我的代理</a>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 text-blue"> 
+	            	<a href="#" class="size14">
+                   		5000.00 <i class="iconfont icon-renminbi"></i>
+                    	<div class="mui-media-body text-999">总收入</div>
+	            	</a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 text-blue">
+	            	<a href="#" class="size14">
+	                   	50032120.00 <i class="iconfont icon-renminbi"></i>
+	                    <div class="mui-media-body text-999">本月业绩收入</div>
+	            	</a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6 text-blue">
+	            	<a href="daili-keyongyue" class="size14">
+                   		50012310.00 <i class="iconfont icon-renminbi"></i>  
+                    	<div class="mui-media-body text-999">可用余额</div>                    	
+	            	</a>
+	            </li>
+	       </ul> 
+	       <ul class="mui-table-view mui-grid-view mui-grid-9">
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6"> 
+	            	<a href="daili-tuijianjiang" class="size14" style="color: #FEAE1B;">
+                   		5000.00 <i class="iconfont icon-renminbi size14"></i>
+                    	<div class="mui-media-body text-999">推荐奖</div>
+	            	</a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6">
+	            	<a href="#" class="size14" style="color: #FEAE1B;">
+	                   	50032120.00 <i class="iconfont icon-renminbi size14"></i>
+	                    <div class="mui-media-body text-999">市场奖</div>
+	            	</a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6">
+	            	<a href="#" class="size14" style="color: #FEAE1B;">
+                   		50012310.00 <i class="iconfont icon-renminbi size14"></i>  
+                    	<div class="mui-media-body text-999">领导奖</div>
+	            	</a>
+	            </li>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-6">
+	            	<a href="#" class="size14" style="color: #FEAE1B;">
+                   		50012310.00 <i class="iconfont icon-renminbi size14"></i>  
+                    	<div class="mui-media-body text-999">感恩奖</div>
+	            	</a>
+	            </li>
+	       </ul>
+		</div>
+	</body> 
+	<script>
+		var h5pullDown = true;  
+	</script>
+	<script src="dist/js/mui.js"></script> 
+	<script src="js/common.js"></script>
+	<script>
+	
+		mui.init({
+			swipeBack: true 
+		});
+		mui.plusReady(function() {
+			mui('.mui-grid-9,.daili-header,.mui-bar').on('tap','a',function(){
+				var href = this.getAttribute('href');
+				if(href==null){
+					mui.back();
+					return false;
+				}					
+				mui.openWindow({
+					url:href + '.html',
+					id: href, 
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					waiting: {
+						autoShow: false,
+						title: '玩命加载中...'
+					},
+				})
+			})
+			
+		})
+	</script>
+	
+</html>

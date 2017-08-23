@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>工资查询</title>
+		<style>
+			td{
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				height: 25px;
+			}
+		</style>
+	</head>
+
+	<body id="gzcx-gzmx">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">工资查询</h1>
+		</header>
+
+		<div class="mui-content" >
+			<ul class="mui-table-view">
+				
+				<li class="mui-table-view-cell mui-table-view-cell-title">应发工资 <span class="text-danger" id="shi-fa">0.00</span> <br />实发工资 <span class="text-danger" id="ying-fa">0.00</span></li>
+				<li class="mui-table-view-cell" id="gong-zi-info">
+					<!--<table width="50%" class="mui-pull-left">
+						<tr>
+							<td width="28%" class="mui-text-left text-999">基本工资</td>
+							<td width="32%">￥12121.00</td>
+						</tr>
+					</table>
+					<table width="50%" class="mui-pull-left">
+						<tr>
+							<td width="28%" class="mui-text-left text-999">基本工资</td>
+							<td width="32%">￥12121.00</td>
+						</tr>
+					</table>-->
+				</li>
+			</ul>
+			
+		</div>
+
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="build/gzcx-gzmx.js">
+		
+	</script>
+
+</html>

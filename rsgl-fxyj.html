@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>人事管理</title>
+	</head>
+
+	<body id="rsgl-fxyj">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<div id="segmentedControl" class="mui-segmented-control">
+				<a class="mui-control-item mui-active" href="#item1">
+					合同待签
+				</a>
+				<a class="mui-control-item" href="#item2">
+					社保待缴
+				</a>
+			</div>
+		</header>
+
+		<div class="mui-content">
+			<div class="text-info mui-row">
+				<div class="mui-col-xs-1"><i class="icon iconfont icon-tishi"></i></div>
+				<div class="mui-col-xs-11">提示:如果不及时与员工签订合同，你可能面临劳动纠纷的风险。 </div>
+			</div>
+
+			<div id="item1" class="mui-control-content mui-active">
+				<ul class="mui-table-view" id="htdq-list">
+					<li class="mui-table-view-cell mui-collapse">
+						暂无数据
+					</li>
+
+				</ul>
+			</div>
+			<div id="item2" class="mui-control-content">
+				<ul class="mui-table-view" id="sbdj-list">
+					<li class="mui-table-view-cell mui-collapse">
+						暂无数据
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="build/rsgl-fxyj.js">
+		
+	</script>
+
+</html>

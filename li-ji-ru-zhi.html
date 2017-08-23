@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>员工入职</title>
+		<style type="text/css">
+			.autocompleter {
+				position: absolute;
+				z-index: 100;
+				top: 60px;
+				left: 0;
+				width: 100%;
+			}
+			
+			.autocompleter,
+			.autocompleter-hint {
+				position: absolute;
+			}
+			
+			.autocompleter {
+				top: 50px;
+			}
+			
+			.autocompleter-list {
+				float: right;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: left;
+				box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+			}
+			
+			.autocompleter-item-selected {
+				background: #fff;
+			}
+			
+			.autocompleter-item {
+				padding: 0px 12px;
+				cursor: pointer;
+				color: #444;
+				background: #f8f8f8;
+				height: 45px;
+				line-height: 45px;
+			}
+			
+			.autocompleter-item:hover {
+				background: #e8e8e8;
+			}
+			
+			.autocompleter-item strong {
+				background: #259cf0;
+				color: #fff;
+			}
+			
+			.autocompleter-item span {
+				color: #bbb;
+			}
+			
+			.autocompleter-hint {
+				font-weight: 400;
+				top: -50px;
+				right: 0;
+				display: none;
+				width: 100%;
+				padding: 0px 12px 0px 0px;
+				text-align: right;
+				color: #ccc;
+			}
+			
+			.autocompleter-hint span {
+				color: transparent;
+			}
+			
+			.autocompleter-hint-show {
+				display: block;
+			}
+			
+			.autocompleter-closed {
+				display: none;
+			}
+			
+			.mui-table-view-cell {
+				position: relative;
+			}
+			
+			.mui-table-view-cell #actionsheet {
+				font-size: 30px;
+				position: absolute;
+				right: 15px;
+				bottom: 15px;
+				text-align: center;
+				color: #4f8bfb;
+				border-radius: 40px;
+			}
+			
+			.mui-table-view-cell #actionsheet .mui-icon {
+				font-size: 35px;
+			}
+			
+			.mui-slider-indicator .mui-indicator {
+				border: 1px solid #fff;
+				background: none;
+				box-shadow: none;
+			}
+		</style>
+	</head>
+	<style type="text/css">
+		.mui-icon-eye {
+			margin: 7px 10px 0 0;
+		}
+	</style>
+
+	<body id="gzcx">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">选择公司</h1>
+		</header>
+
+		<div class="mui-content">
+			<br />
+			<form class="mui-input-group">
+				<div class="mui-input-row" style="padding-top: 0px; position: static;">
+					<!--<label style="width: 20%;" class="mui-text-right"><i style="color: #259cef; font-size: 24px;" class="mui-icon icon iconfont icon-ruzhi"></i></label>-->
+					<input style="" id="nope" type="text" placeholder="请输入要加入的公司名称">
+					<input type="hidden"  id="cmp_id" name="company_id" />
+					
+				</div>
+			</form>
+
+			<div class="mui-content-padded">
+				<a class="mui-btn mui-btn-primary mui-btn-block btn-check-psw" id="li-ji-ru-zhi">下一步：完善自我评价</a>
+			</div>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.autocompleter.js"></script>
+	<script src="build/li-ji-ru-zhi.js">
+		
+		
+	</script>
+
+</html>

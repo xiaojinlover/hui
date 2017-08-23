@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/mui.picker.all.css">
+		<title>慧人事</title>
+		<style>
+			textarea,input{
+				border: 1px solid #fff;
+			}	
+				
+				.mui-table-view-cell>.mui-active{
+				background-color: #fff !important;
+			}
+		
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+				
+					
+			.autocompleter {
+				position: absolute;
+				z-index: 100;
+				top: 60px;
+				left: 0;
+				width: 100%;
+			}
+			
+			.autocompleter,
+			.autocompleter-hint {
+				
+				position: absolute;
+			}
+			
+			.autocompleter {
+				top: 410px;
+			}
+			
+			.autocompleter-list {
+				float: right;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: left;
+				box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+			}
+			
+			.autocompleter-item-selected {
+				background: #fff;
+			}
+			
+			.autocompleter-item {
+				padding: 0px 12px;
+				cursor: pointer;
+				color: #444;
+				background: #f8f8f8;
+				height: 45px;
+				line-height: 45px;
+			}
+			
+			.autocompleter-item:hover {
+				background: #e8e8e8;
+				
+			}
+			
+			.autocompleter-item strong {
+				background: #259cf0;
+				color: #fff;
+			}
+			
+			.autocompleter-item span {
+				color: #bbb;
+			}
+			
+			.autocompleter-hint {
+				font-weight: 400;
+				top: -32px;
+				right: 0;
+				display: none;
+				width: 100%;
+				padding: 0px 12px 0px 0px;
+				text-align: right;
+				color: #ccc;
+			}
+			
+			.autocompleter-hint span {
+				color: transparent;
+			}
+			
+			.autocompleter-hint-show {
+				display: none;
+			}			
+			.autocompleter-closed {
+				display: none;
+			}
+			
+			.mui-table-view-cell {
+				position: relative;
+			}
+			
+			.mui-table-view-cell #actionsheet {
+				font-size: 30px;
+				position: absolute;
+				right: 15px;
+				bottom: 15px;
+				text-align: center;
+				color: #4f8bfb;
+				border-radius: 40px;
+			}
+			
+			.mui-table-view-cell #actionsheet .mui-icon {
+				font-size: 35px;
+			}
+			
+			.mui-slider-indicator .mui-indicator { 
+				border: 1px solid #fff;
+				background: none;
+				box-shadow: none;
+			}
+		
+		</style>
+	</head>
+
+	<body id="setting-wdll-jyjl">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-arrowleft"></a>
+			<h1 id="title" class="mui-title">自我评价</h1>
+		</header>
+		<div class="mui-content">
+			<!--<div class="mui-content-padded">-->
+				<div class="mui-table-view-divider"></div> 
+				<form>
+					<div class="mui-input-row" >
+						<textarea rows="3" name="self_judge" placeholder="自我评价" style="margin-bottom: 10px;"></textarea>
+					</div>
+					<div class="mui-input-row">
+						<textarea rows="3" name="job_plan" placeholder="职业规划" style="margin-bottom: 0px;"></textarea>
+					</div>
+					<div class="mui-input-group">				
+						<h5 class="text-333">上传证件照</h5>  
+						<div class="mui-btn-row">      
+							<div class="img-box mui-pull-left"><img id="image-view" class="mui-hidden" src=""  data-preview-src="" data-preview-group="1" /></div>     
+							<div class="btn-box mui-pull-left" id="btn-box"><span class="iconfont icon-jia"></span></div>   
+							 <input type="hidden" name="file" id="file" />
+						</div> 
+					</div>  
+					<div class="mui-table-view-divider"></div>
+					<div class="mui-input-row" style="position: static;">
+						<input style="border: none;" id="nope" type="text" placeholder="请输入并选择要加入的部门">
+						<input type="hidden"  id="department_id" name="departmentid" />
+						
+					</div>
+					
+				</form>
+			<div class="mui-content-padded" style="margin-top:0;">
+				<a class="mui-btn mui-btn-primary mui-btn-block btn-check-psw" id="wan-cheng-ru-zhi">提交并完成入职</a>
+				<a class="mui-btn mui-btn-danger mui-btn-block btn-check-psw" id="qu-xiao-ru-zhi">撤销入职</a>
+			</div>
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.autocompleter.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+	<script src="build/ruzhi-wdll-zwpj.js"></script>
+	<script>
+		
+	</script>
+	
+
+</html>

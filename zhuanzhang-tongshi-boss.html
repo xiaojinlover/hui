@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title> 
+		<style>
+			.mui-popup-input input{
+				border: 1px solid #eee;
+				height: 40px;
+			}
+			.mui-popup-button.mui-popup-button-bold {
+			    font-weight: normal;
+			}
+			.mui-popup-button::after,.mui-popup-inner::after{
+				background-color: #eee;
+			}
+			.mui-popup-title{
+				font-weight: normal;
+				font-size: 16px;
+			}
+			.zhuanzhang-header{
+				margin-bottom: 15px;				
+			}
+			.zhuanzhang-header img{
+				width: 18%;
+				margin-top: 15px;
+				border-radius: 50%;
+			}
+			.zhuanzhang-header h2{
+				font-size: 16px;
+				color: #666;	
+				font-weight: normal;			
+			}
+			.zhuanzhang-header h3{
+				font-size: 13px;
+				font-weight: normal;
+				color: #999;
+				line-height: 30px;
+			}
+			.mui-input-row label{
+				width: 28% !important;
+				
+			}
+			.mui-input-row input{
+				width: 70% !important;
+			}
+		</style>
+	</head>
+	<body id="score-tixian">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>			
+			<h1 id="title" class="mui-title">转账到</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-table-view-divider"></div>
+			<form>
+				<div class="zhuanzhang-header mui-text-center" id="zhuanzhang-header"> 
+					<img src="images/logo-white.png" />
+					<h2></h2>
+					<h3></h3>
+				</div>
+				<div class="mui-input-group">
+					<!--<ul class="mui-table-view">
+						<li class="mui-table-view-cell" style="font-size: 16px;"> 
+							充值到 <span class="text-999" id="user-name"></span>
+						</li>							
+					</ul>-->
+					<p>转账金额：</p> 
+					<div class="mui-input-row">						
+						<label class="text-999">￥</label>
+						<input type="text" name="tran_int_num" placeholder="">  
+					</div>					
+					<div class="mui-input-row" style="height: 38px;">
+						<label class="text-999" style="font-size:15px">验证码</label>
+						<input style="font-size: 16px;height: 38px; line-height: 1.1;" type="text" id="code01" name="code01" class="mui-input">
+						<button type="button" id="code" class="code">获取验证码</button> 
+					</div>
+					<div class="mui-input-row" style="height: 38px;">						
+						<label class="text-999" style="font-size:15px">项目名称</label>
+						<input type="text" name="int_item" placeholder="" style="font-size: 16px;height: 38px; line-height: 1.1;">  
+					</div>
+					<p>可用余额：<span id="have-int-num" class="text-danger">0</span></p>
+				</div>
+				<div class="mui-content-padded">
+					<p style="margin-left: 5px;"><i class="mui-icon mui-icon-info" style="font-size: 20px;"></i> 温馨提示：余额低于最低赠送标准时将不能享受每日返还积分！</p>
+					<p style="margin-left: 5px;"><i class="mui-icon mui-icon-info" style="font-size: 20px;"></i> 根据税法规定：个人工资所得额超过（含）3500元则需按照一定比例缴纳个人所得税。</p>
+					
+					<a class="mui-btn mui-btn-primary mui-btn-block" id="btn-tixian">确定</a>
+				</div>
+				
+			</form>
+			
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	
+	<script src="build/zhuanzhang-tongshi-boss.js"></script>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>员工考勤</title>
+	</head>
+
+	<body id="index-boss-kqjl">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">今日考勤</h1>
+		</header>
+
+		<div class="mui-content"> 
+			<div class="mui-segmented-control">
+				<a class="mui-control-item mui-active"  href="#item1">	 				
+					<p>考勤记录（<span class="text-danger" id="kao-qin-ji-lu-num">0</span>）</p>
+				</a>
+				<a class="mui-control-item" href="#item2">					
+					<p>迟到早退（<span class="text-danger" id="chi-dao-zao-tui-num">0</span>）</p> 
+				</a>
+				<a class="mui-control-item" href="#item3">					
+					<p>缺勤旷工（<span class="text-danger" id="que-qin-kuang-gong-num">0</span>）</p>
+				</a>
+			</div>
+			<div id="item1" class="mui-control-content mui-active" >
+				<ul class="mui-table-view mui-table-view-chevron" id="kao-qin-ji-lu">
+					<li class="mui-table-view-cell mui-media"> 
+						暂无数据
+					</li>
+					<!--<li class="mui-table-view-cell mui-media"> 
+						<a class="mui-navigate-right" href="index-boss-ygkq-detail">
+							<img class="mui-media-object mui-pull-left" src="images/test02.png">
+							<div class="mui-media-body">
+								东方不败 <small class="text-999">总经理</small>  
+								<p>签到：<span class="text-333">08:20</span></p>
+								<p>签退：<span class="text-danger">18:20</span></p>
+							</div>
+						</a>
+					</li>-->
+				</ul>  
+			</div>
+			<div id="item2" class="mui-control-content" >
+				<ul class="mui-table-view" id="chi-dao-zao-tui"> 
+					<li class="mui-table-view-cell">暂无数据</li>
+
+				</ul>
+			</div>
+			<div id="item3" class="mui-control-content">
+				<ul class="mui-table-view" id="que-qin-kuang-gong">
+
+					<li class="mui-table-view-cell mui-collapse">
+						暂无数据
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="build/index-boss-kqjl.js">
+		
+	</script>
+
+</html>

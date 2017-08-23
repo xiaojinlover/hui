@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title> 
+		<style>
+			.mui-table-view-cell::after{
+				background: #eee;
+			}
+		</style>
+	</head>
+	<body id="bind-bank-card">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">银行卡</h1>
+		</header>
+		<div class="mui-content">			
+			<ul class="mui-table-view" id="card-info">
+				<!--<li class="mui-table-view-cell">工伤银行（尾号：2019）<span class="mui-badge mui-badge-danger mui-badge-inverted" style="font-size: 16px;">解除绑定</span></li>-->
+			</ul>
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	<script src="build/bank-card-delet.js"></script>
+
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+		<style type="text/css">
+			.mui-table-view-cell>.mui-active{
+				background-color: #fff !important;
+			}
+		
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body id="setting-boss"> 
+		<header class="mui-bar mui-bar-nav">
+			<h1 id="title" class="mui-title">个人中心</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="index">
+				<span class="mui-icon icon iconfont icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="address">
+				<span class="mui-icon icon iconfont icon-address"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="setting">
+				<span class="mui-icon icon iconfont icon-setting1"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-title">
+				<li class="mui-table-view-cell mui-media">
+					<a class='mui-navigate-right' href="#" id="head">
+						<img class="mui-media-object mui-pull-left" src="images/logo-white.png" id="head-img1" data-preview-src="" data-preview-group="1">
+						<div class="mui-media-body" id="xing-ming">
+							<p class="mui-ellipsis"></p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-item">
+				<li class="mui-table-view-divider" id="ji-ben-zi-liao-divider"></li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub" id="ji-ben-zi-liao">
+					<a class="mui-navigate-right " href="setting-wdll-grzl">
+						<i class="icon iconfont icon-setting01"></i>基本资料
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub" id="zhi-wei-xin-xi">
+					<a class="mui-navigate-right" href="setting-zwxx">
+						<i class="icon iconfont icon-setting03"></i>职位信息
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li> 
+				
+				<!--<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-dnfw">
+						<i class="icon iconfont icon-setting02"></i>电脑访问
+					</a> 
+				</li>-->
+				
+				<!--<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-lzxx">
+						<i class="icon iconfont icon-setting04"></i>离职申请
+					</a>
+				</li>-->
+								
+				
+				<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-gonggao">
+						<i class="icon iconfont icon-setting05"></i>公告
+					</a>
+				</li>
+				
+				<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-gzzd">
+						<i class="mui-icon mui-icon-star-filled" style="font-size: 22px; margin-left: -4px;"></i>制度
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-yjfk">
+						<i class="icon iconfont icon-yijian"></i>意见反馈
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-gywm">
+						<i class="icon iconfont icon-guanyu"></i>关于我们  
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub">
+					<a class="mui-navigate-right" href="setting-shezhi">
+						<i class="icon iconfont icon-setting06"></i>设置
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/exif.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+	<!--<script src="build/setting.js"></script>-->
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		//头像预览
+		mui.previewImage(); 
+		mui.plusReady(function() {
+			//
+			document.getElementById('head-img1').setAttribute('src',plus.storage.getItem('users_image'));
+			document.getElementById('xing-ming').innerHTML = plus.storage.getItem('real_name') + '<p class="mui-ellipsis" >' + (plus.storage.getItem('zhi_wei') != null ? plus.storage.getItem('zhi_wei') : '暂无') + '</p>';
+			
+			if(plus.storage.getItem('if_company')==1){
+				document.getElementById('ji-ben-zi-liao').className = 'mui-hidden';
+				document.getElementById('zhi-wei-xin-xi').className = 'mui-hidden';
+				document.getElementById('ji-ben-zi-liao-divider').className = 'mui-hidden';
+				
+			}
+			
+			//选项卡
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+
+					var href = this.getAttribute('href');
+					if(href == "index" && plus.storage.getItem('if_company') == 1) {
+						href = "index-boss";
+					} else if(href == "index" && plus.storage.getItem('if_company') != 1){
+						href = "index";
+					}
+					mui.openWindow({
+						url: href + '.html',
+						id: href,
+						createNew: false,
+						show: {
+							autoShow: true,
+							aniShow: false
+						},
+						waiting: {
+							autoShow: true,
+							title: '拼命加载中...'
+						},
+
+					})
+				})
+				//链接
+				
+			mui('.mui-table-view-cell-sub').on('tap', 'a', function(e) {
+
+				var href = this.getAttribute('href');
+				
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					waiting: {
+						autoShow: true,
+						title: '拼命加载中...'
+					},
+
+				})
+				
+			})
+
+			
+			//点击头像触发
+			mui(".mui-table-view-cell").on("tap", "#xing-ming", function(e) {
+				if(mui.os.plus) {
+					var a = [{
+						title: "拍照"
+					}, {
+						title: "从手机相册选择"
+					}];
+					plus.nativeUI.actionSheet({
+						title: "修改头像",
+						cancel: "取消",
+						buttons: a
+					}, function(b) {
+						switch(b.index) {
+							case 0:
+								break;
+							case 1:
+								getImage(); /*拍照*/
+								break;
+							case 2:
+								galleryImg(); /*打开相册*/
+								break;
+							default:
+								break
+						}
+					})
+				}
+
+//				e.stopPropagation()
+			});
+
+			//拍照
+			function getImage() {
+				var c = plus.camera.getCamera();
+				c.captureImage(function(e) {
+					plus.io.resolveLocalFileSystemURL(e, function(entry) {
+						var s = entry.toLocalURL() + "?version=" + new Date().getTime();						
+						
+						if(isAndroidIos()=='isIos'){
+							//旋转图片
+							plus.zip.compressImage({
+									src:s,
+									dst:s,
+									overwrite:true,
+									rotate:-90,										
+								},
+								function() {
+									uploadHead(s); /*上传图片*/
+									console.log("旋转成功!");
+								},function(error) {
+									console.log("旋转失败!");
+							});
+						}else{
+							uploadHead(s); /*上传图片*/
+						}
+						
+
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(s) {
+					console.log("error" + s);
+				}, {
+					filename: "_doc/head.png"
+				})
+			}
+
+			//本地相册选择
+			function galleryImg() {
+				plus.gallery.pick(function(a) {
+					plus.io.resolveLocalFileSystemURL(a, function(entry) {
+						plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+							
+							root.getFile("head.png", {}, function(file) {
+								
+								//文件已存在
+								file.remove(function() {
+									
+									entry.copyTo(root, 'head.png', function(e) {
+											var path = e.fullPath + "?version=" + new Date().getTime();
+											console.log(e.fullPath)
+											uploadHead(path); /*上传图片*/ 
+											  
+										},
+										function(e) {
+											console.log('copy image fail:' + e.message);
+										});
+								}, function() {
+									console.log("delete image fail:" + e.message);
+								});
+							}, function() {
+								//文件不存在
+								entry.copyTo(root, 'head.png', function(e) {
+										var path = e.fullPath + "?version=" + new Date().getTime();
+										alert(path)
+										uploadHead(path); /*上传图片*/
+									},
+									function(e) {
+										console.log('copy image fail:' + e.message);
+									});
+							});
+						}, function(e) {
+							console.log("get _www folder fail");
+						})
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(a) {}, {
+					filter: "image"
+				})
+			};
+
+			//上传头像图片 
+			function uploadHead(imgPath) {
+
+				var image = new Image();
+				image.src = imgPath;
+				image.onload = function() {
+					
+					var imgData = getBase64Image(image);
+					document.getElementById('head-img1').setAttribute('src', 'data:image/png;base64,' + imgData);
+					//调用上传接口
+					var uploadHeaderData = {
+						"token": plus.storage.getItem('token'),
+						"head_image":imgData
+					}
+					
+					mui.ajax('http://www.huirenshi.com/Hrs/app/upload_head_image', {
+						data: uploadHeaderData,
+						type: 'post',
+						timeout: 10000,
+						success: function(data) {							
+							var data = JSON.parse(data);
+							if(data.status == 1) {
+								plus.storage.setItem('users_image',data.data.url);								
+								mui.alert(data.detail);
+							} else {
+								mui.alert(data.detail);
+							}
+						},
+						beforeSend: function() {
+							plus.nativeUI.showWaiting("头像上传中...");
+						},
+						complete: function() {
+							plus.nativeUI.closeWaiting();
+						},
+						error: function(xhr, typeinfo) {
+							if(typeinfo=='abort'){
+								mui.alert('连接不到网络，请检查您当前的网络设置');
+							}else{
+								mui.alert('参数错误' + typeinfo);
+							}
+						}
+					});
+					
+					
+				}
+			}
+			
+			
+			//将图片压缩转成base64 
+			function getBase64Image(img) {
+				
+				
+				var canvas = document.createElement("canvas");
+				var imgwidth = img.width;
+				
+				if(imgwidth<=960){
+					var imgwidth = img.width/2;
+					var imgheight = img.height/2;
+				}else if(imgwidth>960&&imgwidth<2448){
+					var imgwidth = img.width/3;
+					var imgheight = img.height/3;
+				}else{
+					var imgwidth = img.width/6;
+					var imgheight = img.height/6;
+				}
+				
+				//裁剪图片
+				var top = 0;
+				var left = 0;
+				
+				if(imgwidth>imgheight){
+					width = imgheight;
+					height = imgheight; 
+					top = 0;
+					left = (imgwidth - imgheight)/2 ;
+				}else{  
+					width = imgwidth;
+					height = imgwidth;
+					left = 0;
+					top = (imgheight-imgwidth)/2;
+				}
+				
+				canvas.width = width; /*设置新的图片的宽度*/
+				canvas.height = height; /*设置新的图片的长度*/
+				var ctx = canvas.getContext("2d");
+				
+				ctx.drawImage(img, -left, -top, imgwidth, imgheight); /*绘图*/
+				var dataURL = canvas.toDataURL("image/png", 0.1);
+				return dataURL.replace("data:image/png;base64,", "");
+			} 
+		})
+	</script>
+</html>

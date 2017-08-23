@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="examples/hello-mui/css/icons-extra.css">
+
+		<title>慧人事</title>
+
+	</head>
+
+	<body id="score-xjgz-mingxi">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">积分变动明细</h1>
+			<!--<a class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" href="bank-card-list" style="line-height: 44px;color: #fff;" ><i class="mui-icon-extra mui-icon-extra-card"></i></a>-->
+		</header>
+		<div class="mui-content">
+			<div>
+				<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
+					<a class="mui-control-item mui-active" href="#item1">
+						已完成
+					</a>
+					<a class="mui-control-item" href="#item2">
+						进行中
+					</a>
+					<a class="mui-control-item" href="#item3">
+						已失败
+					</a>
+				</div>
+			</div>
+
+			<div id="item1" class="mui-control-content mui-active">
+				<ul class="mui-table-view" id="yi-wan-cheng">
+					<li class="mui-table-view-cell">暂无明细</li>
+
+					<!--<li class="mui-table-view-cell">
+						<div class="mui-media-body">
+							薪福购
+							<p class="mui-ellipsis">2017-03-01</p>
+						</div>
+						<span class="mui-badge mui-badge-inverted text-danger">-8100.00</span>
+					</li>-->
+					
+					
+				</ul>
+			</div>
+			<div id="item2" class="mui-control-content">				
+				<ul class="mui-table-view" id="jin-xing-zhong">	
+					<li class="mui-table-view-cell">暂无明细</li>
+				</ul>
+			</div>
+			<div id="item3" class="mui-control-content">				
+				<ul class="mui-table-view" id="yi-shi-bai">	
+					<li class="mui-table-view-cell">暂无明细</li>				
+				</ul>
+			</div>
+			<!--<p class="mui-text-left" style="line-height: 1.7em;margin: 10px;"><i class="mui-icon mui-icon-info" style="font-size: 20px;"></i> <span class="text-333">温馨提示</span> : 福利积分券属本公司为激励员工而赠送的，只能用于本公司商城消费，不能提现，中途离职，未赠送完部分的福利将冻结。最终的解释权归宁波麦智云服信息科技有限公司所有。 </p>-->
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	<!--<script src="build/score-jifen-mingxi.js"></script>-->
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能		
+		});
+
+		mui.plusReady(function() {
+			var getInfoData = {
+				"token": plus.storage.getItem('token')
+				
+			}
+			
+			mui.ajax(apiUrl + 'Usersint/already_int_record', {
+				data: getInfoData,
+				type: 'post',
+				timeout: 10000,
+				success: function(data) {
+					var data = JSON.parse(data);
+					var gongziListHtml = '';
+					if(data.data.have_int_list != '') {
+						mui.each(data.data.have_int_list, function(index, item) {
+							gongziListHtml += '<li class="mui-table-view-cell"><div class="mui-media-body">' + item.in_out + item.remark + '<p class="mui-ellipsis">' + item.add_time + '</p></div><span class="mui-badge mui-badge-inverted ' + (item.int_num<0?"text-danger":"text-blue") + '">' + item.int_num + '</span></li>'
+						})
+					}
+					if(gongziListHtml != '')						
+						document.getElementById('yi-wan-cheng').innerHTML = gongziListHtml;
+
+				},
+				beforeSend: function() {
+					plus.nativeUI.showWaiting("玩命加载中...", {
+						background: "rgba(0,0,0,0.5)"
+					});
+
+				},
+				complete: function() {
+					plus.nativeUI.closeWaiting();
+				},
+				error: function(xhr, typeinfo) {
+					if(typeinfo == 'abort') {
+						mui.alert('连接不到网络，请检查您当前的网络设置');
+					} else {
+						mui.alert('参数错误' + typeinfo);
+					}
+				}
+			});
+			
+			//进行中
+			var jinxingzhongData = {
+				"token":plus.storage.getItem('token'),
+				"type":1,
+				"if_int":1
+			}
+			mui.ajax(apiUrl + 'Usersint/tran_manage', {
+				data: jinxingzhongData,
+				type: 'post',
+				timeout: 10000,
+				success: function(data) {
+					
+					var data = JSON.parse(data);
+					var jinxingzhongListHtml = '';
+					if(data.data != '') {
+						mui.each(data.data, function(index, item) {
+							jinxingzhongListHtml += '<li class="mui-table-view-cell"><div class="mui-media-body">' + item.in_out + '(' +item.remark + ')' + '<p class="mui-ellipsis">' + item.add_time + '</p></div><span class="mui-badge mui-badge-inverted ' + (item.int_num<0?"text-danger":"text-blue") + '">' + item.int_num + '</span></li>'
+						})
+					}
+					if(jinxingzhongListHtml != '')						
+						document.getElementById('jin-xing-zhong').innerHTML = jinxingzhongListHtml;
+
+				},
+				beforeSend: function() {
+					plus.nativeUI.showWaiting("玩命加载中...", {
+						background: "rgba(0,0,0,0.5)"
+					});
+
+				},
+				complete: function() {
+					plus.nativeUI.closeWaiting();
+				},
+				error: function(xhr, typeinfo) {
+					if(typeinfo == 'abort') {
+						mui.alert('连接不到网络，请检查您当前的网络设置');
+					} else {
+						mui.alert('参数错误' + typeinfo);
+					}
+				}
+			});
+			//已失败
+			var yishibaiData = {
+				"token":plus.storage.getItem('token'),
+				"type":2,
+				"if_int":1
+			}
+			mui.ajax(apiUrl + 'Usersint/tran_manage', {
+				data: yishibaiData,
+				type: 'post',
+				timeout: 10000,
+				success: function(data) {
+					
+					var data = JSON.parse(data);
+					var yishibaiListHtml = '';
+					if(data.data != '') {
+						mui.each(data.data, function(index, item) {
+							yishibaiListHtml += '<li class="mui-table-view-cell"><div class="mui-media-body">' + item.in_out + '(' +item.remark + ')' + '<p class="mui-ellipsis">' + item.add_time + '</p></div><span class="mui-badge mui-badge-inverted ' + (item.int_num<0?"text-danger":"text-blue") + '">' + item.int_num + '</span></li>'
+						})
+					}
+					if(yishibaiListHtml != '')						
+						document.getElementById('yi-shi-bai').innerHTML = yishibaiListHtml;
+
+				},
+				beforeSend: function() {
+					plus.nativeUI.showWaiting("玩命加载中...", {
+						background: "rgba(0,0,0,0.5)"
+					});
+
+				},
+				complete: function() {
+					plus.nativeUI.closeWaiting();
+				},
+				error: function(xhr, typeinfo) {
+					if(typeinfo == 'abort') {
+						mui.alert('连接不到网络，请检查您当前的网络设置');
+					} else {
+						mui.alert('参数错误' + typeinfo);
+					}
+				}
+			});
+
+		})
+	</script>
+	
+
+</html>

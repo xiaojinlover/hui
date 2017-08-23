@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+ 
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css"> 
+		<title>慧人事</title> 
+	</head>
+
+	<body id="login">
+
+		<div class="mui-content">   
+			<div class="logo"> <br /><img src="images/logo.png" /> <br /></div>    
+			<div class="mui-content-padded"> 
+				<form class="mui-input-group">  
+					<div class="mui-input-row">
+						<label><i class="icon iconfont icon-zhanghao"></i></label>
+						<input name="username" id="username" type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+					</div>
+					<div class="mui-input-row">  
+						<label><i class="icon iconfont icon-xiugaimima"></i></label>
+						<input name="password" id="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+					</div>
+					<!--<div class="link-area">
+						<a href="#" id="btn-findpsw">忘记密码</a>
+					</div>-->
+					<div class="mui-row">
+						<div class="mui-col-xs-6">
+							<div class="mui-input-row mui-radio mui-left">
+								<label>个人登录</label>
+								<input name="if_company" checked="checked" value="0" type="radio">
+							</div>
+						</div> 
+						<div class="mui-col-xs-6"> 
+							<div class="mui-input-row mui-radio mui-left">
+								<label>企业登录</label>
+								<input name="if_company" value="1" type="radio">   
+							</div>
+						</div>
+					</div>
+					
+					<br  />  
+					<a class="mui-btn mui-btn-block btn-login" id="btn-login">登录</a>
+					<div class="mui-row">
+						<div class="mui-col-xs-6" style="padding-right: 5px;">
+							<a href="#" id="btn-qiye-register1" class="mui-btn mui-btn-block mui-btn-outlined" style="font-size: 16px;">企业用户注册</a>
+						</div>
+						<div class="mui-col-xs-6" style="padding-left: 5px;">
+							<a class="mui-btn mui-btn-block mui-btn-outlined"  id="btn-register" style="font-size: 16px;">个人用户注册</a>
+						</div>
+					</div>
+				</form>
+				<a href="#" id="btn-findpsw" class="btn-qiye-register mui-pull-right">忘记密码</a> 				
+			</div> 
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="build/login.js"></script>
+	
+	
+</html>

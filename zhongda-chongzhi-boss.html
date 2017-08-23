@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title> 
+		<style>
+			.mui-popup-input input{
+				border: 1px solid #eee;
+				height: 40px;
+			}
+			.mui-popup-button.mui-popup-button-bold {
+			    font-weight: normal;
+			}
+			.mui-popup-button::after,.mui-popup-inner::after{
+				background-color: #eee;
+			}
+			.mui-popup-title{
+				font-weight: normal;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body id="score-tixian">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>			
+			<h1 id="title" class="mui-title">商城充值</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-table-view-divider"></div> 
+			<form>
+				<div class="mui-input-group">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell" style="font-size: 16px;"> 
+							充值到 <span class="text-999" id="user-name"></span>
+						</li>							
+					</ul>
+					<p>充值金额：</p>
+					<div class="mui-input-row">						
+						<label class="text-999">￥</label>
+						<input type="text" name="tran_total" placeholder="">  
+					</div>
+					<p>可用余额：<span id="have-int-num">0</span></p>
+				</div>
+				<div class="mui-content-padded">
+					<p style="margin-left: 5px;"><i class="mui-icon mui-icon-info" style="font-size: 20px;"></i> 温馨提示：余额低于最低赠送标准时将不能享受每日返还积分！</p>
+					<a class="mui-btn mui-btn-primary mui-btn-block" id="btn-tixian">充值</a>
+				</div>
+				
+			</form>
+			
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	
+	<script src="build/zhongda-chongzhi-boss.js"></script>
+	<script>
+		
+	</script>
+
+</html>

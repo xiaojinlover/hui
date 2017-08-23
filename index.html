@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+		<style>
+			#pullrefresh {
+				padding-bottom: 54px;  
+			}
+			#index .mui-content > ul.mui-table-view-chevron li.mui-table-view-cell a#index-header-info::after {   
+			    font-size: 24px;
+			}
+		</style>
+	</head>  
+	<body id="index"> 
+		<header class="mui-bar mui-bar-nav">
+			<h1 id="title" class="mui-title"></h1>
+		</header> 
+
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mui-content">
+					<ul class="mui-table-view mui-table-view-chevron mui-hi">
+						<li class="mui-table-view-cell mui-media"> 
+							<a id="index-header-info" class="mui-navigate-right" href="setting-zwxx">
+								<img class="mui-media-object mui-pull-left" id="users-head" src="images/test-head.png" />
+								<div class="mui-media-body" id="gerenInfo">
+									<p class='mui-ellipsis' id="zhi-wei"></p> 
+								</div> 
+							</a>
+							<a class="mui-btn mui-btn-outlined mui-hidden" href="ruzhi-wdll-grzl" id="li-ji-ru-zhi" style="border: 1px solid rgba(255,255,255,.3);color: #fff;">立即入职</a>
+						</li> 
+					</ul> 
+					<!--积分-->
+					<div class="score-detail-wrap mui-hidden" id="dai-fa"> 
+						<div class="score-detail">  
+							<div class="mui-row">
+								<div class="mui-col-xs-4"> 
+									<a href="score-xjgz">		
+										<div class="mui-pull-left"><i class="iconfont icon-icon_xianjin"></i></div>  
+										<div class="mui-pull-right"> 
+											<span id="xian-jin-gong-zi">0</span>
+											<p>现金工资</p>	  
+										</div>					
+									</a> 
+								</div>
+								<div class="mui-col-xs-4" id="zong-song-ji-fen">
+									<a href="score-zsjf"><div class="mui-pull-left"><i class="iconfont icon-icon_keyong"></i></div> 
+										<div class="mui-pull-right"> 
+											<span id="zeng-song-ji-fen">0</span>
+											<p>赠送积分</p>	 
+										</div>			
+									</a>
+								</div>
+								<div class="mui-col-xs-4" id="dai-zong-ji-fen">
+									<a href="score-dzjf"><div class="mui-pull-left" ><i class="iconfont icon-icon_daizeng"></i></div>  
+										<div class="mui-pull-right"> 
+											<span id="dai-zeng-ji-fen">0</span>
+											<p>待赠积分</p>	
+										</div>			
+									</a>
+								</div>								
+							</div>
+						</div>
+					</div>
+					<!--积分 end-->
+					<div class="mui-row mui-hidden" id="bai-daka">
+						<div class="mui-col-xs-4">   
+							<div class="clock" id="clock">
+								<span id="clock-text">完成打卡</span> 
+								<p id="timeShow">00:00:00</p>
+							</div>
+						</div>
+						<div class="mui-col-xs-8 mui-row">  
+							<a class="mui-col-xs-4" href="kqjl" param="if_chidaozaotui">
+								<span id="cdzt">0</span>
+								<p>迟到早退</p>
+							</a>
+							<a class="mui-col-xs-4" href="kqjl" param="if_kuanggongqueqing">
+								<span id="kgqq">0</span>
+								<p>旷工缺勤</p>
+							</a>
+							<a class="mui-col-xs-4" href="jqcx" param="if_jiaqin">
+								<span id="jqts">0</span>
+								<p>假勤天数</p>
+							</a>
+						</div>
+					</div>
+					 
+					<!--9宫格-->
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="bai-01">
+							<a href="jqsq">
+								<img src="images/index-icon-jqsq.png" />
+								<div class="mui-media-body">假勤申请</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="bai-02">
+							<a href="kqjl">
+								<img src="images/index-icon-kqjl.png" />
+								<div class="mui-media-body">考勤记录</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="shen-pi-guan-li">
+							<a href="index-boss-spgl">
+								<img src="images/index-icon-jqsp.png" />
+								<div class="mui-media-body">审批管理</div>
+							</a> 
+						</li>						
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="bai-03">
+							<a href="jqcx">
+								<img src="images/index-icon-jqcx.png" />
+								<div class="mui-media-body">假勤查询</div>
+							</a> 
+						</li>
+						<!--<li class="mui-table-view-cell mui-media mui-col-xs-4">
+							<a href="gzcx">
+								<img src="images/index-icon-gzcx.png" />
+								<div class="mui-media-body">工资查询</div>
+							</a>
+						</li>-->
+						
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="bu-men-kao-qin">
+							<a href="kqjl-bumen">
+								<img src="images/index-icon-bmkq.png" />
+								<div class="mui-media-body">部门考勤</div>
+							</a>
+						</li>
+						
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="kao-qin-ji-lu">
+							<a href="index-boss-kqjl">
+								<img src="images/icon-gskq.png" />
+								<div class="mui-media-body">公司考勤</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="feng-xian-yu-jing">
+							<a href="index-boss-fxyj">
+								<img src="images/index-icon-fxyj.png" />
+								<div class="mui-media-body">风险预警</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-hidden" id="yuan-gong-jia-qin">
+							<a href="index-boss-ygjq">
+								<img src="images/icon-ygjq.png" />
+								<div class="mui-media-body">员工假勤</div>
+							</a> 
+						</li>
+						
+						<li class="mui-table-view-cell mui-media mui-col-xs-4">
+							<a href="setting-gonggao">
+								<img src="images/index-icon-gonggao.png" />
+								<div class="mui-media-body">公告</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4">
+							<a href="setting-gzzd">
+								<img src="images/index-icon-gzzd.png" />
+								<div class="mui-media-body">制度</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4">
+							<a href="shop">
+								<img src="images/index-icon-shop.png" />
+								<div class="mui-media-body">福利商城</div> 
+							</a>
+						</li>
+						<!--<li class="mui-table-view-cell mui-media mui-col-xs-4">
+							<a href="daili">
+								<img src="images/index-icon-daili.png" />
+								<div class="mui-media-body">代理</div> 
+							</a>
+						</li>-->
+					</ul>
+					<!--9宫格 end-->
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="index">
+				<span class="mui-icon icon iconfont icon-home1"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="address">  
+				<span class="mui-icon icon iconfont icon-address"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" href="setting">
+				<span class="mui-icon icon iconfont icon-setting"></span> 
+				<span class="mui-tab-label">我的</span> 
+			</a>
+		</nav> 
+
+	</body> 
+	<script>
+		var h5pullDown = true;  
+	</script>
+	<script src="dist/js/mui.js"></script>	
+	<script src="js/common.js"></script>
+	<script src="js/baiduMaps.js"></script> 
+	<script src="js/GeoUtils.js"></script> 
+	<script src="build/index.js"></script>	
+	<script>
+		
+	</script>
+	
+</html>

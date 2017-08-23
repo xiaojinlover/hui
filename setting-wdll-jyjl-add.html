@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/mui.picker.all.css">
+		<title>慧人事</title>
+	</head>
+
+	<body id="setting-wdll-jyjl-add">
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class=" mui-action-back mui-btn mui-btn-blue mui-btn-link mui-btn-nav mui-pull-left">取消</a>-->
+			<h1 id="title" class="mui-title">详情</h1>
+			<a class=" mui-action-back mui-btn mui-btn-blue  mui-btn-link mui-btn-nav mui-pull-left"><span class="mui-icon mui-icon-arrowleft"></span>返回</a>
+			<!--<a class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" id="update-jiao-yu-jing-li">保存</a>-->
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-table-view-divider"></div>
+				<div class="mui-input-row">
+					<label>学校</label>
+					<input type="text" name="jing_li_name" disabled="disabled"  placeholder="" value="">
+				</div>
+				<div class="mui-input-row">
+					<label>专业</label>
+					<input type="text" name="major" disabled="disabled" placeholder="">
+				</div>
+				<div class="mui-input-row">
+					<label>学历</label>
+					<input type="text" name="degree" disabled="disabled" placeholder="">
+				</div>
+				<!--<div class="mui-input-row mui-select">
+					<label>学历</label>
+					<select name="degree" id="degree">
+						<option value=" ">请选择</option>
+					</select>
+				</div>-->
+				<div class="mui-table-view-divider"></div>
+				<div class="mui-input-row">
+					<label>入学日期</label>
+					<input name="start_time" type="text" disabled="disabled" id="date" placeholder="" value="">
+				</div>
+				<div class="mui-input-row">
+					<label>毕业日期</label>
+					<input name="end_time" id="date" disabled="disabled" type="text" placeholder="">
+				</div>
+
+			</form>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="dist/js/mui.picker.all.js"></script>
+	<script src="build/setting-wdll-jyjl-add.js">
+		
+	</script>
+
+</html>

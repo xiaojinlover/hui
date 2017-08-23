@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/mui.picker.all.css">
+		<title>慧人事</title>
+	</head>
+
+	<body id="setting-lzxx">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">离职申请</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-table-view-divider"></div>
+				<div class="mui-input-row">
+					<label>公司名称</label>
+					<input type="text" placeholder="" id="gong-si-min-cheng" value="" disabled>
+				</div>
+				<div class="mui-table-view-divider"></div>
+
+				<div class="mui-input-row">
+					<label>离职日期</label>
+					<input type="text" name="li_zhi_ri_qi" placeholder="请选择离职日期" id="date" value="">
+				</div>
+
+				<div class="mui-table-view-divider"></div>
+				<div>
+					<textarea name="li_zhi_yuan_yin" placeholder="请输入离职原因"></textarea>
+				</div>
+				<div class="mui-table-view-divider"></div>
+				<div class="mui-button-row">
+					<a class="mui-btn mui-btn-primary mui-btn-block" id="update-lizhi">提交</a>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="dist/js/mui.picker.all.js"></script>
+	<script src="build/setting-lzxx.js">
+		
+	</script>
+
+</html>

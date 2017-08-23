@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link href="css/mui.indexedlist.css" rel="stylesheet" />
+		<title>慧人事</title>
+		<style>
+			html,
+			body,
+			.mui-content,
+			.mui-indexed-list{
+				height: 100%;				 
+			}
+			#pullrefresh{
+				padding-top: 35px; 
+			}			
+		    .mui-indexed-list-item {
+			    padding-right: 25px !important;
+			}
+			.mui-bar-tab ~ .mui-content {
+			    padding-bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body id="address">
+		<header class="mui-bar mui-bar-nav">
+			<h1 id="title" class="mui-title">通讯录</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="index">
+				<span class="mui-icon icon iconfont icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="address">
+				<span class="mui-icon icon iconfont icon-address1"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" href="setting">
+				<span class="mui-icon icon iconfont icon-setting"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+				</div>
+				<div class="mui-indexed-list-bar mui-hidden">
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div id="pullrefresh" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="mui-indexed-list-empty-alert">没有数据</div>
+							<ul class="mui-table-view" id="address-list">
+								
+								<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+								<li data-tags="asan" class="mui-table-view-cell mui-indexed-list-item">
+									<img class="mui-media-object mui-pull-left" src="images/test-head.png">
+									<div class="mui-media-object mui-pull-right"><i class="icon iconfont icon-address-phone"></i></div>
+									<div class="mui-media-body">
+										阿三（15988601338）  
+										<p class='mui-ellipsis'>人事经理</p>
+									</div>
+								</li>
+								<li data-tags="aer" class="mui-table-view-cell mui-indexed-list-item">
+									<img class="mui-media-object mui-pull-left" src="images/test02.png">
+									<div class="mui-media-object mui-pull-right"><i class="icon iconfont icon-address-phone"></i></div>
+									<div class="mui-media-body">
+										阿尔（15988601338）
+										<p class='mui-ellipsis'>销售经理</p>
+									</div>
+								</li>
+								<li data-tags="aer" class="mui-table-view-cell mui-indexed-list-item">
+									<img class="mui-media-object mui-pull-left" src="images/test02.png">
+									<div class="mui-media-object mui-pull-right"><i class="icon iconfont icon-address-phone"></i></div>
+									<div class="mui-media-body">
+										阿三（15988601338）
+										<p class='mui-ellipsis'>市场营销</p>
+									</div>
+								</li>-->
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/mui.indexedlist.js"></script>	
+	<script src="build/address.js"></script>
+	<script>
+		
+	</script>
+</html>

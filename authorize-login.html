@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+		<style>
+			
+			.authotize-header{
+				background: #259cf0;
+				text-align: center;
+			}
+			.authotize-header img{ 
+				border-radius: 50%;
+				width: 16%;
+				margin: 40px 0 20px 0;
+				box-shadow: 0 0 40px rgba(255,255,255,.5);
+			}
+			.authotize-header p{
+				color: #fff;	
+				font-size: 14px;			
+			}
+			.mui-table-view-cell::after {
+				background: #F5F5F5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">授权登录</h1>
+		</header>
+		<div class="mui-content">
+			<div class="authotize-header">
+				<img src="images/hui2.0.png"  />
+				<p class="text-center">该服务由众大商城提供 <br/>向其提供一下权限即可继续操作</p>				
+				<br  />
+			</div>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<input type="checkbox" checked disabled><span class="mui-badge mui-badge-primary mui-badge-inverted">获取您的公开信息（登录名）</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<input type="checkbox" checked disabled><span class="mui-badge mui-badge-primary mui-badge-inverted ">使用身份信息（姓名、手机号、性别）</span>
+				</li>
+			</ul>
+			
+			<div class="mui-content-padded">				
+				<a class="mui-btn mui-btn-block mui-btn-primary" id="btn-authorize">&nbsp;确 定</a>
+			</div>	
+			
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script> 
+	<script src="dist/js/mui.js"></script>  
+	<script src="js/common.js"></script>
+	<script src="build/authorize-login.js"></script>
+	
+	<script>
+		
+	</script>
+</html>

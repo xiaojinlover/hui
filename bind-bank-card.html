@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<style type="text/css">
+			.autocompleter {
+				position: absolute;
+				z-index: 100;
+				top: 60px;
+				left: 0;
+				width: 100%;
+			}
+			
+			.autocompleter,
+			.autocompleter-hint {
+				position: absolute;
+			}
+			
+			.autocompleter {
+				top: 120px;
+			}
+			
+			.autocompleter-list {
+				float: right;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: left;
+				box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+			}
+			
+			.autocompleter-item-selected {
+				background: #fff;
+			}
+			
+			.autocompleter-item {
+				padding: 0px 12px;
+				cursor: pointer;
+				color: #444;
+				background: #f8f8f8;
+				height: 45px;
+				line-height: 45px;
+			}
+			
+			.autocompleter-item:hover {
+				background: #e8e8e8;
+			}
+			/*color*/
+			.autocompleter-item strong {
+				background: #259cf0;
+				color: #fff;
+			}
+			
+			.autocompleter-item span {
+				color: #bbb;
+			}
+			
+			.autocompleter-hint {
+				font-weight: 400;
+				top: -50px;
+				right: 0;
+				display: none;
+				width: 100%;
+				padding: 18px 12px 0px 0px;
+				text-align: right;
+				color: #ccc;
+			}
+			
+			.autocompleter-hint span {
+				color: transparent;
+			}
+			
+			.autocompleter-hint-show {
+				display: block;
+			}
+			
+			.autocompleter-closed {
+				display: none;
+			}
+			
+			.mui-table-view-cell {
+				position: relative;
+			}
+			
+			.mui-table-view-cell #actionsheet {
+				font-size: 30px;
+				position: absolute;
+				right: 15px;
+				bottom: 15px;
+				text-align: center;
+				color: #4f8bfb;
+				border-radius: 40px;
+			}
+			
+			.mui-table-view-cell #actionsheet .mui-icon {
+				font-size: 35px;
+			}
+			
+			.mui-slider-indicator .mui-indicator {
+				border: 1px solid #fff;
+				background: none;
+				box-shadow: none;
+			} 
+		</style>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+	</head>
+
+	<body id="bind-bank-card">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">绑定银行卡</h1>
+		</header>
+		<div class="mui-content">
+			<p class="mui-table-view-divider">请绑定您的银行卡</p>
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label class="text-999">卡号</label>
+					<input type="text" name="cardnum" class="mui-input-clear" />
+				</div>
+				<div class="mui-input-row">
+					<label class="text-999">持卡人</label>
+					<input type="text" name="username" class="mui-input-clear"/>
+				</div>
+				<div class="mui-input-row" style="position: static;">					
+					<input type="text" name="bankname" placeholder="请输入您的开户行名称并点击选择" id="nope"/>
+				</div>
+				<input type="hidden" id="cmp_id" name="bankid" />
+				<input type="hidden" name="cardtype" />
+				<input type="hidden" id="cmp_name" name="bankname1" />
+			</form>
+			<!--<div class="mui-content-padded">
+				<p class="mui-h5 mui-text-center" id="card-info">
+					民生银行/<small>借记卡</small>
+				</p>
+			</div>-->
+			<div class="mui-content-padded">
+				<a class="mui-btn mui-btn-primary mui-btn-block">提 交</a>
+			</div>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.autocompleter.js"></script>
+	<script src="build/bind-bank-card.js">
+		
+	</script>
+
+</html>

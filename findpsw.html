@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+		<style>
+			label{
+				
+				font-size: 15px;
+				font-weight: normal;
+				padding-left: 41px;
+			}
+			input[type='radio']:checked:before {	
+				font-size:18px;
+			}
+			input[type='radio']:before {
+				font-size: 18px!important;
+			}
+			input[type='radio'] {						
+				
+				font-size: 18px;
+			}
+		</style>
+	</head>
+
+	<body id="findpsw">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">忘记密码</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label><i class="icon iconfont icon-zhanghao"></i></label>
+						<input id='username' name="username" type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+					</div>
+					<div class="mui-input-row">
+						<label><i class="icon iconfont icon-yanzhengma"></i></label>
+						<input size="1" id='code01' name="code01" type="text" class="mui-input" placeholder="验证码">
+						<button type="button" id="code" class="code">获取验证码</button>
+					</div>
+					<div class="mui-row" >
+						<div class="mui-col-xs-6">
+							<div class="mui-input-row mui-radio mui-left">
+								<label style="width: 100%;">个人账号</label>
+								<input name="if_company" checked="checked" value="0" type="radio">
+							</div>
+						</div> 
+						<div class="mui-col-xs-6"> 
+							<div class="mui-input-row mui-radio mui-left">
+								<label style="width: 100%;">企业账号</label>
+								<input name="if_company" value="1" type="radio">   
+							</div>
+						</div>
+					</div>
+					<div class="mui-button-row">
+						<a class="mui-btn mui-btn-primary mui-btn-block" id="btn-next-step">下一步</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script>var h5pullDown = true;</script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	
+	<script src="build/findpsw.js"></script>
+	
+</html>
