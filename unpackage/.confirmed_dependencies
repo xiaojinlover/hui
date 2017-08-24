@@ -1,0 +1,58 @@
+{
+	"index.html": {
+		"resources": [
+			"images/index-icon-kqjl.png",
+			"images/icon-ygjq.png",
+			"dist/js/mui.js",
+			"images/index-icon-shop.png",
+			"images/index-icon-jqsq.png",
+			"images/index-icon-bmkq.png",
+			"images/icon-gskq.png",
+			"dist/css/style.css",
+			"images/index-icon-gzzd.png",
+			"js/GeoUtils.js",
+			"images/index-icon-fxyj.png",
+			"images/index-icon-jqsp.png",
+			"js/common.js",
+			"images/test-head.png",
+			"js/baiduMaps.js",
+			"images/index-icon-gonggao.png",
+			"css/iconfont.css",
+			"buildNew/index.js",
+			"css/iconfont.woff",
+			"images/index-icon-jqcx.png",
+			"images/index-icon-daili.png",
+			"dist/css/mui.css",
+			"dist/fonts/mui.ttf"
+		],
+		"refer": [
+			"address.html",
+			"setting.html",
+			"daili.html"
+		]
+	},
+	"address.html": {
+		"resources": [
+			"buildNew/address.js",
+			"css/mui.indexedlist.css",
+			"js/mui.indexedlist.js"
+		]
+	},
+	"setting.html": {
+		"resources": [
+			"js/exif.js",
+			"js/mui.zoom.js",
+			"buildNew/setting.js",
+			"js/mui.previewimage.js",
+			"images/logo-white.png"
+		],
+		"refer": [
+			"index.html"
+		]
+	},
+	"daili.html": {
+		"resources": [
+			"css/buttons.css"
+		]
+	}
+}

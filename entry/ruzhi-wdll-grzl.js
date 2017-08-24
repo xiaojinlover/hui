@@ -3,40 +3,8 @@ mui.init({
 
 		});
 		
-		var uploadPhoto = function(imgData){
-			var uploadHeaderData = {
-				"token": plus.storage.getItem('token'),
-				"if_upload":1,
-				"yi_cun_zhao":imgData
-			}
-			
-			mui.ajax('http://www.huirenshi.com/V2/App/upload_ycz_image', {
-				data: uploadHeaderData,
-				type: 'post',
-				timeout: 10000,
-				success: function(data) {							
-					var data = JSON.parse(data);
-
-					mui.toast(data.detail)
-
-				},
-				beforeSend: function() {
-					plus.nativeUI.showWaiting("头像上传中...");
-				},
-				complete: function() {
-					plus.nativeUI.closeWaiting();
-				},
-				error: function(xhr, typeinfo) {
-					if(typeinfo=='abort'){
-						mui.alert('连接不到网络，请检查您当前的网络设置');
-					}else{
-						mui.alert('参数错误' + typeinfo);
-					}
-				}
-			});
-		}
+		
 		mui.plusReady(function() {
-			mui.previewImage(); 
 			//获取基本信息
 			function getUserInfo(){
 			var getUserInfoData = {
@@ -65,10 +33,6 @@ mui.init({
 							document.getElementById('qq').innerHTML = data.data.qq;
 							document.getElementById('jin_ji_lian_xi_ren').innerHTML = data.data.jin_ji_lian_xi_ren;
 							document.getElementById('jin_ji_lian_xi_ren_dian_hua').innerHTML = data.data.jin_ji_lian_xi_ren_dian_hua;
-//							if(data.data.yi_cun_zhao!=''){
-//								document.getElementById('image-view').setAttribute('src',data.data.yi_cun_zhao);	
-//								document.getElementById('image-view').setAttribute('class','');
-//							}
 //							document.getElementById('kai_hu_hang').innerHTML = data.data.kai_hu_hang;
 //							document.getElementById('gong_zi_ka_hao').innerHTML = data.data.gong_zi_ka_hao;
 						} else {
@@ -81,12 +45,8 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			}
@@ -115,12 +75,8 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			}
@@ -146,12 +102,8 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			}
@@ -179,12 +131,8 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			}
@@ -211,21 +159,13 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			}
 			//下一步（完善工作经历）
 			mui('.mui-content-padded').on('tap','a',function(){
-				if(document.getElementById('shen_fen_zheng').innerHTML == ''){
-					mui.alert('请完善您的身份证号码');
-					return false;
-				}
 				var href = this.getAttribute('href')
 				mui.openWindow({
 					url: href + '.html',
@@ -272,12 +212,8 @@ mui.init({
 					complete: function() {
 						plus.nativeUI.closeWaiting();
 					},
-					error: function(xhr, typeinfo) {						
-						if(typeinfo=='abort'){
-							mui.alert('连接不到网络，请检查您当前的网络设置');
-						}else{
-							mui.alert('参数错误' + typeinfo);
-						}
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
 					}
 				});
 			} else {
@@ -322,9 +258,4 @@ mui.init({
 					}
 				})
 			})
-			
-		
-			
-			
-			 
 		})

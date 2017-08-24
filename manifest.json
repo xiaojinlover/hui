@@ -317,7 +317,9 @@
 					"build/index.js",
 					"images/index-icon-daili.png",
 					"images/icon-ygjq.png",
-					"images/icon-kqjl.png"
+					"images/icon-kqjl.png",
+					"images/icon-gskq.png",
+					"buildNew/index.js"
 				],
 				"refer": [
 					"plus/payment.html",
@@ -1539,7 +1541,8 @@
 					"dist/fonts/mui.ttf",
 					"images/test-head.png",
 					"js/common.js",
-					"images/logo-white.png"
+					"images/logo-white.png",
+					"buildNew/address.js"
 				],
 				"refer": [
 					"setting.html",
@@ -1565,7 +1568,8 @@
 					null,
 					"js/mui.zoom.js",
 					"js/mui.previewimage.js",
-					"build/setting.js"
+					"build/setting.js",
+					"buildNew/setting.js"
 				],
 				"refer": [
 					"index.html",
