@@ -1425,6 +1425,38 @@ nav.mui-bar-tab .mui-tab-item span.mui-icon {
   margin-top: 5px;
 }
 
+#setting-wdll-jyjl h5 {
+  margin-left: 15px;
+  margin-top: 10px;
+  font-size: 16px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+#setting-wdll-jyjl .mui-btn-row {
+  border-bottom: 1px solid #eee;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  height: auto;
+  overflow: hidden;
+}
+#setting-wdll-jyjl .mui-btn-row .img-box img {
+  height: 60px;
+  width: 60px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+#setting-wdll-jyjl .mui-btn-row .btn-box {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  line-height: 55px;
+  border-radius: 5px;
+}
+#setting-wdll-jyjl .mui-btn-row .btn-box span {
+  color: #ccc;
+  font-size: 40px;
+}
 #setting-wdll-jyjl .mui-content .mui-table-view::after {
   height: 0;
 }
