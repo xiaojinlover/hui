@@ -38,6 +38,7 @@ mui.init({
 				
 				if(href=="score-tixian"||href == "zhongda-chongzhi-boss"){
 					mui.alert('开发中，敬请期待');
+					return false;
 //					var haveIntNum = document.getElementById('ke-yong-yu-e').innerHTML;
 				}
 				if(href == 'select-tongshi'){

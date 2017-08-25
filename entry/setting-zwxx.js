@@ -50,32 +50,38 @@ mui.init({
 			mui('.mui-table-view').on('tap', 'a', function() {
 					var action = this.getAttribute('data-action');
 					
-					if(action == 'che-xiao'){						
-						mui.ajax(apiUrl +  'Employee/cancel_leave', {
-							data: zhiweiInfoData,
-							type: 'post',
-							timeout: 10000,
-							success: function(data) {
-								console.log(data)
-								var data = JSON.parse(data);
-								if(data.detail=="撤消离职成功"){
-									mui.alert(data.detail,function(){
-										document.getElementById('li-zhi-shen-qing').innerHTML = '<li class="mui-table-view-divider"></li><li class="mui-table-view-cell mui-table-view-cell-sub"><a class="mui-navigate-right" href="setting-lzxx">离职申请</a></li>';
-										document.getElementById('yuan_gong_zhuang_tai').innerHTML = "在职";  
-									});
-								}
-								
-							},
-							beforeSend: function() {
-								plus.nativeUI.showWaiting("玩命加载中...");
-							},
-							complete: function() {
-								plus.nativeUI.closeWaiting();
-							},
-							error: function(xhr, typeinfo) {
-								mui.alert("参数错误：" + typeinfo);
-							}
-						});
+					if(action == 'che-xiao'){	
+						mui.confirm("您确定要撤销入职",function(e){							
+							if(e.index==1){								
+								mui.ajax(apiUrl +  'Employee/cancel_leave', {
+									data: zhiweiInfoData,
+									type: 'post',
+									timeout: 10000,
+									success: function(data) {
+										console.log(data)
+										var data = JSON.parse(data);
+										if(data.detail=="撤消离职成功"){
+											mui.alert(data.detail,function(){
+												document.getElementById('li-zhi-shen-qing').innerHTML = '<li class="mui-table-view-divider"></li><li class="mui-table-view-cell mui-table-view-cell-sub"><a class="mui-navigate-right" href="setting-lzxx">离职申请</a></li>';
+												document.getElementById('yuan_gong_zhuang_tai').innerHTML = "在职";  
+											});
+										}
+										
+									},
+									beforeSend: function() {
+										plus.nativeUI.showWaiting("玩命加载中...");
+									},
+									complete: function() {
+										plus.nativeUI.closeWaiting();
+									},
+									error: function(xhr, typeinfo) {
+										mui.alert("参数错误：" + typeinfo);
+									}
+								});
+							}							
+						})
+						
+						
 						return false;
 					}
 					

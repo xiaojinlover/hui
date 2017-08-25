@@ -52,8 +52,8 @@ module.exports = {
 		"ruzhi-wdll-grzl-add-birthday":'./entry/ruzhi-wdll-grzl-add-birthday',
 		"ruzhi-wdll-gzjl":'./entry/ruzhi-wdll-gzjl',
 		"ruzhi-wdll-gzjl-add":'./entry/ruzhi-wdll-gzjl-add',
-//		"ruzhi-wdll-jtbj":'./entry/ruzhi-wdll-jtbj',
-//		"ruzhi-wdll-jtbj-add":'./entry/ruzhi-wdll-jtbj-add',
+		"ruzhi-wdll-jtbj":'./entry/ruzhi-wdll-jtbj',
+		"ruzhi-wdll-jtbj-add":'./entry/ruzhi-wdll-jtbj-add',
 		
 		"ruzhi-wdll-jyjl":'./entry/ruzhi-wdll-jyjl',
 		"ruzhi-wdll-jyjl-add":'./entry/ruzhi-wdll-jyjl-add',
@@ -68,7 +68,7 @@ module.exports = {
 		"setting-gywm":'./entry/setting-gywm',
 		"setting-gzzd":'./entry/setting-gzzd',
 		"setting-gzzd-detail":'./entry/setting-gzzd-detail',
-//		"setting-lzxx":'./entry/setting-lzxx',
+		"setting-lzxx":'./entry/setting-lzxx',
 		"setting-shezhi":'./entry/setting-shezhi',
 		"setting-shezhi-dlmmxg":'./entry/setting-shezhi-dlmmxg',
 		"setting-shezhi-zfmmxg":'./entry/setting-shezhi-zfmmxg',
@@ -83,12 +83,12 @@ module.exports = {
 //		"zhongda-chongzhi":'./entry/zhongda-chongzhi',
 		"select-tongshi":'./entry/select-tongshi',
 		"ruzhi-wdll-zwpj":'./entry/ruzhi-wdll-zwpj',		
-//		"score-xjgz-mingxi":'./entry/score-xjgz-mingxi',
+		"score-xjgz-mingxi":'./entry/score-xjgz-mingxi',
 		"score-jifen-mingxi":'./entry/score-jifen-mingxi',
 //		"zhongda-chongzhi-boss":'./entry/zhongda-chongzhi-boss',
 		"index-boss-kyjf":'./entry/index-boss-kyjf',
 		"zhuanzhang-tongshi-boss":'./entry/zhuanzhang-tongshi-boss',
-//		"zhuanzhang-tongshi":'./entry/zhuanzhang-tongshi'
+		"zhuanzhang-tongshi":'./entry/zhuanzhang-tongshi'
 		
 		
 	},	

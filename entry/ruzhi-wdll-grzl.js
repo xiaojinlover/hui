@@ -166,7 +166,12 @@ mui.init({
 			}
 			//下一步（完善工作经历）
 			mui('.mui-content-padded').on('tap','a',function(){
-				var href = this.getAttribute('href')
+				var href = this.getAttribute('href');
+				if(document.getElementById('shen_fen_zheng').innerHTML ==""){
+					mui.alert("请完善您的身份证号码");
+					return false;
+				}
+					
 				mui.openWindow({
 					url: href + '.html',
 					id: href,
