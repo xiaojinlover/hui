@@ -1791,7 +1791,8 @@
 					"images/icon-kqjl.png",
 					"images/icon-rgcb.png",
 					"build/index-boss.js",
-					"images/index-icon-shop.png"
+					"images/index-icon-shop.png",
+					"buildNew/index-boss.js"
 				],
 				"refer": [
 					"index-boss-qyygcb.html",
@@ -1809,7 +1810,8 @@
 					"index-boss-bycz.html",
 					"index-boss-bysy.html",
 					"shop.html",
-					"index-boss-rgcb.html"
+					"index-boss-rgcb.html",
+					"index-boss-ygtj.html"
 				],
 				"priority": 0
 			},
@@ -2308,6 +2310,13 @@
 			"score-tixian.html": {
 				"resources": [
 					"build/score-tixian.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"index-boss-ygtj.html": {
+				"resources": [
+					"buildNew/index-boss-ygtj.js"
 				],
 				"refer": [],
 				"priority": 0

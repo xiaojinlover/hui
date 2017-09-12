@@ -28,7 +28,8 @@
 		"refer": [
 			"address.html",
 			"setting.html",
-			"daili.html"
+			"daili.html",
+			"index-boss.html"
 		]
 	},
 	"address.html": {
@@ -53,6 +54,23 @@
 	"daili.html": {
 		"resources": [
 			"css/buttons.css"
+		]
+	},
+	"index-boss.html": {
+		"resources": [
+			"buildNew/index-boss.js",
+			"images/icon-ygtj.png",
+			"images/icon-fxyj.png",
+			"images/icon-kqjl.png",
+			"images/icon-rgcb.png"
+		],
+		"refer": [
+			"index-boss-ygtj.html"
+		]
+	},
+	"index-boss-ygtj.html": {
+		"resources": [
+			"buildNew/index-boss-ygtj.js"
 		]
 	}
 }

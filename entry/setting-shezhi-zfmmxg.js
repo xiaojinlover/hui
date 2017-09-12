@@ -35,7 +35,7 @@ mui.init({
 					}
 				}
 			});
-
+			
 			//设置密码
 			mui(document).on('tap', '#btn-update-psw', function() {
 				if(plus.storage.getItem('if-set-psw') == 0) {
