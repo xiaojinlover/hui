@@ -114,10 +114,11 @@
 				if(plus.storage.getItem('role') == "0") {
 					document.getElementById('index-header-info').removeAttribute('class');
 					document.getElementById('li-ji-ru-zhi').setAttribute('class', 'mui-btn mui-btn-outlined');
-
+					document.getElementById('kuaishebao').setAttribute('class','mui-table-view-cell mui-media mui-col-xs-4');
 				} else {
 					document.getElementById('index-header-info').setAttribute('class', 'mui-navigate-right');
 					document.getElementById('li-ji-ru-zhi').setAttribute('class', 'mui-btn mui-btn-outlined mui-hidden');
+					
 				}
 				//是否HR或总经理副总经理
 				

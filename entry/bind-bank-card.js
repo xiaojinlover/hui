@@ -3,7 +3,7 @@ mui.init({
 		});
 
 		mui.plusReady(function() {
-			
+			document.forms[0].username.value = plus.storage.getItem('real_name');
 			function getCardInfo(cardNum) {
 				if(cardNum=='')
 					return false;

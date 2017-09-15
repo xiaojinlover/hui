@@ -23,7 +23,8 @@
 			"images/index-icon-jqcx.png",
 			"images/index-icon-daili.png",
 			"dist/css/mui.css",
-			"dist/fonts/mui.ttf"
+			"dist/fonts/mui.ttf",
+			"images/index-icon-kuaishebao.png"
 		],
 		"refer": [
 			"address.html",

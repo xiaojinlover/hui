@@ -319,7 +319,8 @@
 					"images/icon-ygjq.png",
 					"images/icon-kqjl.png",
 					"images/icon-gskq.png",
-					"buildNew/index.js"
+					"buildNew/index.js",
+					"images/index-icon-kuaishebao.png"
 				],
 				"refer": [
 					"plus/payment.html",
