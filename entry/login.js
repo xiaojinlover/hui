@@ -82,8 +82,7 @@ mui.init({
 				//提交数据
 				var telephone = form.username.value;
 //				var password = document.getElementById("password");
-				mui.ajax(apiUrl +  'login/login', {
-					
+				mui.ajax(apiUrl +  'login/login', {					
 					data: loginData,
 					type: 'post',
 					timeout: 10000,
@@ -99,7 +98,6 @@ mui.init({
 							plus.storage.setItem("role", data.data.role);
 							plus.storage.setItem("zhi_wei", data.data.zhi_wei);
 							plus.storage.setItem("real_name", data.data.real_name);
-							plus.storage.setItem('if_white',data.data.if_white);
 							plus.storage.setItem('telephone_key',data.data.telephone_key);
 							plus.storage.setItem('if_company',data.data.if_company)
 							//会员头像

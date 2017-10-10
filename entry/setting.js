@@ -1,3 +1,4 @@
+
 mui.init({
 			swipeBack: true //启用右滑关闭功能
 		});
@@ -190,7 +191,7 @@ mui.init({
 						"head_image":imgData
 					}
 					
-					mui.ajax('http://www.huirenshi.com/Hrs/app/upload_head_image', {
+					mui.ajax('http://www.huirenshi.com/V2/app/upload_head_image', {
 						data: uploadHeaderData,
 						type: 'post',
 						timeout: 10000,

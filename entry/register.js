@@ -14,7 +14,8 @@ mui.init({
 				}
 				var codeData = {
 						"telephone": form.username.value,
-						"type": 0,						
+						"type": 0,	
+						"verify_token": hex_md5("m_a_i$" + document.forms[0].username.value + "$z_h_i")
 					}
 					//ajax提交获取验证码
 				mui.ajax(apiUrl +  'login/get_verify_2', {

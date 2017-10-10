@@ -4,7 +4,7 @@ mui.init({
 		
 		mui.plusReady(function() {
 			if(plus.webview.currentWebview().isJifen=='1'){
-				document.getElementById('title').innerHTML = '发积分至' + plus.webview.currentWebview().name;
+				document.getElementById('title').innerHTML = '发福利券至' + plus.webview.currentWebview().name;
 			}else{
 				document.getElementById('title').innerHTML = '发薪至' + plus.webview.currentWebview().name;
 			}
@@ -66,7 +66,7 @@ mui.init({
 			})
 
 				
-			//发积分
+			//发福利券
 			mui(document).on('tap','#btn-tixian',function(){				
 				var tran_int_num = document.forms[0].tran_int_num.value;
 				if(tran_int_num==''){

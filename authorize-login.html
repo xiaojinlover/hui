@@ -40,7 +40,7 @@
 		<div class="mui-content">
 			<div class="authotize-header">
 				<img src="images/hui2.0.png"  />
-				<p class="text-center">该服务由众大商城提供 <br/>向其提供一下权限即可继续操作</p>				
+				<p class="text-center">该服务由幸福派提供 <br/>向其提供一下权限即可继续操作</p>				
 				<br  />
 			</div>
 			
@@ -49,7 +49,7 @@
 					<input type="checkbox" checked disabled><span class="mui-badge mui-badge-primary mui-badge-inverted">获取您的公开信息（登录名）</span>
 				</li>
 				<li class="mui-table-view-cell">
-					<input type="checkbox" checked disabled><span class="mui-badge mui-badge-primary mui-badge-inverted ">使用身份信息（姓名、手机号、性别）</span>
+					<input type="checkbox" checked disabled><span class="mui-badge mui-badge-primary mui-badge-inverted ">使用身份信息（姓名、手机号、身份证）</span>
 				</li>
 			</ul>
 			
@@ -62,9 +62,76 @@
 	<script>var h5pullDown = true;</script> 
 	<script src="dist/js/mui.js"></script>  
 	<script src="js/common.js"></script>
-	<script src="buildNew/authorize-login.js"></script> 
+	<!--<script src="buildNew/authorize-login.js"></script>--> 
 	
 	<script>
-		
+		mui.plusReady(function() {
+			
+			mui(document).on('tap','#btn-authorize',function(){			
+				var registerData = {
+					"token":plus.storage.getItem('token'),
+					"key":JSON.parse(plus.storage.getItem('platform'))[0].key
+				}
+				
+				mui.ajax(apiUrl +  'zhongda/platform_register', {
+					data: registerData,
+					type: 'post',
+					timeout: 10000,
+					success: function(data) {
+						console.log(data);
+						var data = JSON.parse(data);
+						if(data.status==1){
+							plus.storage.setItem('if_reg','1');
+							plus.storage.setItem('user_key',data.data.user_key); 
+							mui.openWindow({
+								url: 'shop.html',
+								id: 'shop',
+								createNew: true,
+								show: {
+									autoShow: true,
+									aniShow: "slide-in-right"
+								},								
+								waiting: {
+									autoShow: true,
+									title: '拼命加载中...'
+								},					
+							})
+						}else{
+							
+							mui.alert(data.detail,function(){
+								if(data.detail=='已绑定'){
+									mui.openWindow({
+										url: 'shop.html',
+										id: 'shop',
+										createNew: true,
+										show: {
+											autoShow: true,
+											aniShow: "slide-in-right"
+										},
+										waiting: {
+											autoShow: true,
+											title: '拼命加载中...'
+										},					
+									})
+								}
+							});
+						}
+					},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("授权中...", {
+							background: "rgba(0,0,0,0.4)"
+						});
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+					},
+					error: function(xhr, typeinfo) {
+						mui.alert("参数错误：" + typeinfo);
+					}
+				});
+			})
+	
+	
+		})
 	</script>
 </html>

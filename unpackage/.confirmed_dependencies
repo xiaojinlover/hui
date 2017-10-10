@@ -30,7 +30,10 @@
 			"address.html",
 			"setting.html",
 			"daili.html",
-			"index-boss.html"
+			"index-boss.html",
+			"score-xjgz.html",
+			"shop.html",
+			"login.html"
 		]
 	},
 	"address.html": {
@@ -49,7 +52,8 @@
 			"images/logo-white.png"
 		],
 		"refer": [
-			"index.html"
+			"index.html",
+			"setting-shezhi.html"
 		]
 	},
 	"daili.html": {
@@ -72,6 +76,71 @@
 	"index-boss-ygtj.html": {
 		"resources": [
 			"buildNew/index-boss-ygtj.js"
+		]
+	},
+	"score-xjgz.html": {
+		"resources": [
+			"images/score-cash.png",
+			"css/buttons.css",
+			"examples/hello-mui/fonts/mui-icons-extra.ttf",
+			"examples/hello-mui/css/icons-extra.css",
+			"buildNew/score-xjgz.js",
+			"js/md5.js",
+			"js/common.js",
+			"dist/js/mui.js",
+			"css/iconfont.css",
+			"dist/css/style.css",
+			"css/iconfont.woff",
+			"dist/css/mui.css",
+			"dist/fonts/mui.ttf"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"images/logo.png",
+			"js/jquery-2.1.1.js",
+			"buildNew/login.js",
+			"js/common.js",
+			"dist/js/mui.js",
+			"css/iconfont.css",
+			"dist/css/style.css",
+			"css/iconfont.woff",
+			"dist/css/mui.css",
+			"dist/fonts/mui.ttf"
+		],
+		"refer": [
+			"index.html",
+			"register.html"
+		]
+	},
+	"setting-shezhi.html": {
+		"resources": [
+			"buildNew/setting-shezhi.js"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"shop.html": {
+		"resources": [
+			"js/common.js",
+			"dist/js/mui.js",
+			"css/iconfont.css",
+			"dist/css/style.css",
+			"dist/css/mui.css",
+			"dist/fonts/mui.ttf"
+		]
+	},
+	"register.html": {
+		"resources": [
+			"buildNew/register.js",
+			"js/md5.js",
+			"js/common.js",
+			"dist/js/mui.js",
+			"css/iconfont.css",
+			"dist/css/style.css",
+			"css/iconfont.woff",
+			"dist/css/mui.css"
 		]
 	}
 }

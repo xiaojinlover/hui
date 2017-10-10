@@ -13,7 +13,7 @@ mui.plusReady(function() {
 					
 						var daizengListHtml = '';
 						if(data.data.total_already_int!=''){
-							daizengListHtml = '<li class="mui-table-view-cell">累计转出积分<p>' + data.data.last_back_time + '</p><span class="mui-badge mui-badge-inverted">' + data.data.total_already_int + '</span></li>'
+							daizengListHtml = '<li class="mui-table-view-cell">累计转出福利券<p>' + data.data.last_back_time + '</p><span class="mui-badge mui-badge-inverted">' + data.data.total_already_int + '</span></li>'
 						}
 						if(data.data.stay_back_list!=''){
 							mui.each(data.data.stay_back_list,function(index,item){

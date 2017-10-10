@@ -19,12 +19,19 @@ mui.init({
 				var getAddressData = {
 					"token": plus.storage.getItem("token")
 				};
-				mui.ajax(apiUrl +  'employee/tongxunlu', {
+				
+				
+				if(plus.storage.getItem("if_company")==1)
+					var Url = 'Boss/tongxunlu';
+				else
+					var Url = 'employee/tongxunlu';
+				
+				mui.ajax(apiUrl +  Url, {
 					data: getAddressData,
 					type: 'post',
 					timeout: 10000,
 					success: function(data) {
-						
+						console.log(data)
 						var data = JSON.parse(data);
 						var addressHtml = '';
 						if(data.status == 1 && !!data.data) {
@@ -35,7 +42,7 @@ mui.init({
 									addressHtml += '<li class="mui-table-view-cell mui-indexed-list-item"><img class="mui-media-object mui-pull-left" style="width:40px;height:40px" src="' + (item1.users_image!=null&&item1.users_image!=""?item1.users_image:"images/logo-white.png")  + '"><div class="mui-media-object mui-pull-right"><i class="icon iconfont icon-address-phone" id="dial" tel="' + (item1.telephone!=""?item1.telephone:"暂无") + '" ></i></div><div class="mui-media-body">'+ (item1.users_name!=""?item1.users_name:"暂无")+'（' + (item1.telephone!=""?item1.telephone:"暂无") + '）<p class="mui-ellipsis">' + (item1.zhi_wei!=""?item1.zhi_wei:"暂无")+'<p class="mui-ellipsis">邮箱:' + (item1.email!=null&&item1.email!=""?item1.email:"暂无") + '</p></div></li>';
 								})
 								
-							})
+							}) 
 //							console.log(addressHtml);							
 							document.getElementById('address-list').innerHTML = addressHtml ;
 							//索引列表

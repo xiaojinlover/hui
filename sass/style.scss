@@ -1,5 +1,5 @@
 $blue:#259cf0;
-
+$yellow:#DAA520;
 #login{
 	position:static;
 	background:$blue;  
@@ -349,6 +349,25 @@ nav.mui-bar-tab{
 
 #index{
 	.mui-content{
+		.score-wrap{
+			li{
+				a{
+					i{
+						color: $yellow;
+						font-size: 20px; 
+					}
+					span{
+						color: $yellow;
+						font-size: 20px;
+						font-weight: normal;
+						font-family:  "Times New Roman", "serif";
+					}
+					p{
+						color: $blue; 
+					}
+				}
+			}
+		}
 		.score-detail-wrap{
 			background: $blue;
 			.score-detail{	

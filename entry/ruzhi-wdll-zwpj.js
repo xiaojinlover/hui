@@ -165,7 +165,7 @@ mui.init({
 					
 				}else{
 					mui.confirm('是否确定取消入职',function(e){
-						if(e.index==1){
+						if(e.index==0){
 							var cancelLizhiData = {
 								"token":plus.storage.getItem('token')
 							}

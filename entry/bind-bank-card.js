@@ -4,9 +4,13 @@ mui.init({
 
 		mui.plusReady(function() {
 			document.forms[0].username.value = plus.storage.getItem('real_name');
+			
+			
 			function getCardInfo(cardNum) {
-				if(cardNum=='')
+				var reg = /^[0-9]*$/;
+				if(cardNum==''||!reg.test(cardNum)){
 					return false;
+				}	
 				var getInfoData = {
 					"token":plus.storage.getItem('token'),
 					"cardnum":cardNum
@@ -27,12 +31,14 @@ mui.init({
 				});
 				
 			};
+			
 			document.forms[0].cardnum.onblur=function() {				
 				getCardInfo(document.forms[0].cardnum.value);
 			}
+			
 			//提交银行卡数据 
-			mui('.mui-content-padded').on('tap','.mui-btn-block',function(){				
-				getCardInfo(document.forms[0].cardnum.value);
+			mui('.mui-content-padded').on('tap','.mui-btn-block',function(){
+				
 				if(document.forms[0].cardnum.value==''){
 					mui.alert('请输入您的卡号！');
 					return false;

@@ -75,7 +75,7 @@
 		
 		
 		var getInfo = function getInfo() {} //全局
-
+		
 		//下拉刷新
 		function pulldownRefresh() {
 			setTimeout(function() {
@@ -155,7 +155,7 @@
 					type: 'post',
 					timeout: 10000,
 					success: function(data) {
-						
+//						onsole.log(data)
 						var data = JSON.parse(data);   
 						plus.storage.setItem('ruzhi-status', data.detail);
 						//是否代发
@@ -239,10 +239,11 @@
 							
 							if(data.data.platform){								
 								plus.storage.setItem('platform',JSON.stringify(data.data.platform)); 
-								plus.storage.setItem('if_reg',data.data.platform[0].if_reg.toString()); 								
+								plus.storage.setItem('if_reg',data.data.platform[1].if_reg.toString()); 	
+								plus.storage.setItem('user_key',data.data.platform[1].user_key); 
 							}
 							
-							//用户积分		
+							//用户福利券		
 							if(data.data.wage_int!=null){
 								document.getElementById('xian-jin-gong-zi').innerHTML = data.data.wage_int.have_int_num!=null?data.data.wage_int.have_int_num:'0';
 								document.getElementById('zeng-song-ji-fen').innerHTML = data.data.wage_int.already_int!=null?data.data.wage_int.already_int:'0';
@@ -261,7 +262,7 @@
 							document.getElementById('bai-02').setAttribute('class','mui-table-view-cell mui-media mui-col-xs-4 mui-hidden');
 							document.getElementById('bai-03').setAttribute('class','mui-table-view-cell mui-media mui-col-xs-4 mui-hidden');
 						}
-						//是否显示赠送积分
+						//是否显示赠送福利券
 						if(data.data.if_ret_int==1){
 							document.getElementById('zong-song-ji-fen').className = 'mui-col-xs-4 mui-hidden';
 							document.getElementById('dai-zong-ji-fen').className = 'mui-col-xs-4 mui-hidden';
@@ -335,10 +336,7 @@
 								if(daka=='') {
 									mui.alert('您已经打过上下班卡');
 									return false;
-									
 								}
-								
-
 								var clockData = {
 									"daka": daka,
 									"token": plus.storage.getItem('token')
@@ -422,6 +420,7 @@
 					if(href == 'setting-zwxx' && plus.storage.getItem('role') == "0") {
 						return false;
 					}
+					
 					if(href=='shop'){						
 						if(plus.storage.getItem('if_reg')=='1'){							
 							href = 'shop';							

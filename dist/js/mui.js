@@ -1,6 +1,6 @@
 /*!
  * =====================================================
- * Mui v3.4.1 (http://dev.dcloud.net.cn/mui)
+ * 江许进 v3.3.0 (http://dev.dcloud.net.cn/mui)
  * =====================================================
  */
 /**
@@ -2777,7 +2777,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				if (container) {
 					var $container = $(container);
 					if ($container.length === 1) {
-						if ($.os.plus && $.os.android &&!h5pullDown) { //android 5+（修改jiang）
+						if ($.os.plus && $.os.android) { //android 5+
 							$.plusReady(function() {
 								var webview = plus.webview.currentWebview();
 								if (hasPullup) {
@@ -4932,9 +4932,9 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
  * @returns {undefined}
  */
 (function($, document) {
-    if (!($.os.plus && $.os.android) || h5pullDown) { //仅在5+android支持多webview的使用 （修改jiang）
+    if (!($.os.plus && $.os.android)) { //仅在5+android支持多webview的使用
         return;
-    } 
+    }
     $.plusReady(function() {
         if (window.__NWin_Enable__ === false) { //不支持多webview，则不用5+下拉刷新
             return;
@@ -6199,12 +6199,12 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			}
 		}
 
-		if (activeTab && activeTab.parentElement.classList!="mui-bar mui-bar-tab") {
-			activeTab.classList.remove(className);//修改   
+		if (activeTab) {
+			activeTab.classList.remove(className);
 		}
 
 		var isLastActive = targetTab === activeTab;
-		if (activeTab && activeTab.parentElement.classList!="mui-bar mui-bar-tab") {
+		if (targetTab) {
 			targetTab.classList.add(className);
 		}
 

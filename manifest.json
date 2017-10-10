@@ -1486,7 +1486,8 @@
 					"dist/fonts/mui.ttf",
 					"register.html",
 					"build/register.js",
-					"js/md5.js"
+					"js/md5.js",
+					"buildNew/register.js"
 				],
 				"refer": [
 					"index.html"
@@ -1599,7 +1600,8 @@
 					"css/iconfont.woff",
 					"dist/fonts/mui.ttf",
 					"build/login.js",
-					"js/jquery-2.1.1.js"
+					"js/jquery-2.1.1.js",
+					"buildNew/login.js"
 				],
 				"refer": [
 					"findpsw.html",
@@ -1745,7 +1747,8 @@
 					"dist/css/mui.css",
 					"dist/fonts/mui.ttf",
 					"js/common.js",
-					"build/setting-shezhi.js"
+					"build/setting-shezhi.js",
+					"buildNew/setting-shezhi.js"
 				],
 				"refer": [
 					"login.html",
@@ -2182,7 +2185,12 @@
 					"dist/css/mui.css",
 					"js/md5.js",
 					"css/buttons.css",
-					"build/score-xjgz.js"
+					"build/score-xjgz.js",
+					"buildNew/score-xjgz.js",
+					"css/iconfont.css",
+					"dist/css/style.css",
+					"css/iconfont.woff",
+					"dist/fonts/mui.ttf"
 				],
 				"refer": [
 					"bank-card-list.html"

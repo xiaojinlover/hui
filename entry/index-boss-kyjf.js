@@ -4,7 +4,7 @@ mui.init({
 
 		mui.plusReady(function() {
 			
-			//可用积分
+			//可用福利券
 			var getIntData = {
 				token:plus.storage.getItem('token')
 			}
