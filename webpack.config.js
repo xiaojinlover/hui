@@ -88,7 +88,11 @@ module.exports = {
 //		"zhongda-chongzhi-boss":'./entry/zhongda-chongzhi-boss',
 		"index-boss-kyjf":'./entry/index-boss-kyjf',
 		"zhuanzhang-tongshi-boss":'./entry/zhuanzhang-tongshi-boss',
-		"zhuanzhang-tongshi":'./entry/zhuanzhang-tongshi'
+		"zhuanzhang-tongshi":'./entry/zhuanzhang-tongshi',
+		"score-maifen":'./entry/score-maifen',
+		"setting-gzt-detail":'./entry/setting-gzt-detail',
+		"setting-gzt-list":'./entry/setting-gzt-list',
+		"setting-gzt":'./entry/setting-gzt',
 		
 		
 	},	

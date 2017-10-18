@@ -18,12 +18,19 @@ mui.init({
 			
 			//选项卡
 			mui('.mui-bar-tab').on('tap', 'a', function(e) {
-
+					
 					var href = this.getAttribute('href');
 					if(href == "index" && plus.storage.getItem('if_company') == 1) {
 						href = "index-boss";
 					} else if(href == "index" && plus.storage.getItem('if_company') != 1){
 						href = "index";
+					}
+					if(href=='address'){
+						if(plus.storage.getItem('if_reg') == '1') {
+							href = 'shop';
+						} else {
+							href = 'authorize-login';
+						}
 					}
 					mui.openWindow({
 						url: href + '.html',
@@ -158,7 +165,7 @@ mui.init({
 								//文件不存在
 								entry.copyTo(root, 'head.png', function(e) {
 										var path = e.fullPath + "?version=" + new Date().getTime();
-										alert(path)
+										
 										uploadHead(path); /*上传图片*/
 									},
 									function(e) {

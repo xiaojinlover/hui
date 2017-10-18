@@ -40,7 +40,7 @@ mui.init({
 				
 				//公告详情跳转
 				
-				mui(document).on('tap', 'a', function() {
+				mui('.mui-content').on('tap', 'a', function() {
 					
 					var docUrl = this.getAttribute('doc-url');
 					plus.nativeUI.showWaiting("文件加载中...");

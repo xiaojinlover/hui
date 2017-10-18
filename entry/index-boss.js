@@ -47,9 +47,9 @@ mui.init({
 								document.getElementById('dai-fa').className = 'score-detail-wrap';
 							} 
 							
-							document.getElementById('jrkq').innerHTML = data.data.kao_qin_num;
-							document.getElementById('jrjq').innerHTML = data.data.jia_qin_num;
-							document.getElementById('byyd').innerHTML = data.data.yi_dong;
+//							document.getElementById('jrkq').innerHTML = data.data.kao_qin_num;
+//							document.getElementById('jrjq').innerHTML = data.data.jia_qin_num;
+//							document.getElementById('byyd').innerHTML = data.data.yi_dong;  
 							
 							plus.storage.setItem("users_image", data.data.users_image != null ? data.data.users_image : 'images/test-head.png');
 							document.getElementById('users-head').setAttribute('src',plus.storage.getItem('users_image'));
@@ -62,7 +62,7 @@ mui.init({
 							if(data.data.platform){
 								plus.storage.setItem('platform',JSON.stringify(data.data.platform));
 								plus.storage.setItem('if_reg',data.data.platform[0].if_reg.toString());
-							}
+							} 
 							if(data.data.wage_int!=''){
 								document.getElementById('ben-yue-chong-zhi').innerHTML = data.data.wage_int.month_in;
 								document.getElementById('ke-yong-yu-e').innerHTML = data.data.wage_int.total_int;
@@ -96,6 +96,14 @@ mui.init({
 						href = "index-boss";
 					} else if(href == "index" && plus.storage.getItem('if_company') != 1){
 						href = "index";
+					}
+					
+					if(href=='address'){
+						if(plus.storage.getItem('if_reg') == '1') {
+							href = 'shop';
+						} else {
+							href = 'authorize-login';
+						}
 					}
 					
 					mui.openWindow({

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="examples/hello-mui/css/icons-extra.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<title>慧人事</title>
+		<style>
+			.mui-grid-view {
+				background: #fff !important;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border-right: 1px solid #F8F8F8;
+				border-bottom: none;
+			}
+		</style>
+	</head>
+
+	<body id="score-xjgz">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">麦分</h1>
+			<a class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" href="bank-card-list" style="line-height: 44px;color: #fff;"><i class="mui-icon-extra mui-icon-extra-card"></i></a>
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-media">
+				<li class="mui-table-view-cell" style="padding-top: 18px;">
+
+					<a href="score-maifen-mingxi" class="mui-navigate-right">
+						<img class="mui-media-object mui-pull-left" src="images/score-cash.png" />
+						<div class="mui-media-body" id="gong-zi-info">
+							累计发放麦分总额：0
+							<p class="mui-ellipsis">可用麦分：0</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="btn-xinyongka" href="score-xinyongka">
+						<span class="mui-icon iconfont icon-tixian text-blue"></span>
+						<div class="mui-media-body">信用卡还款</div>
+					</a>
+				</li>
+			</ul>
+
+			<!--<p class="mui-text-left" style="line-height: 1.7em;margin: 10px 0 0 10px;"><span class="text-333">温馨提示</span> :
+				<ol class="text-999 size14" style="margin-top: 0px;">
+					<li>
+						现金工资为企业发放税后工资；
+					</li>
+					<li>
+						工资可提现至各银行卡；
+					</li>
+					<li>
+						提现到账时间为工作日 早上8点30-下午17点30；
+					</li>
+					<li>
+						民生银行卡2小时内到账，其他银行12小时内到账；
+					</li>
+					<li>
+						登录民生银行APP，点击直销银行选择开户，按提示绑定需要提现的银行卡，绑定成功即可实现跨行2小时内到账；
+					</li>
+					<li>
+						最终的解释权归宁波麦智云服信息科技有限公司所有。
+					</li>
+				</ol>-->
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/md5.js"></script>
+	<!--<script src="buildNew/score-maifen.js"></script>-->
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能		
+		});
+
+		mui.plusReady(function() {
+//			console.log(plus.storage.getItem('token'))
+			mui('.mui-media').on('tap', 'a', function(e) {
+
+				var href = this.getAttribute('href');
+
+				if(href == "score-xinyongka") {
+					var haveIntNum = this.getAttribute('have-int-num'); 					
+				}
+				
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					extras: {
+						'haveIntNum': haveIntNum
+					},
+					waiting: {
+						autoShow: true,
+						title: '拼命加载中...'
+					},
+				})
+			})
+
+			mui('.mui-bar-nav').on('tap', '.mui-btn-link', function(e) {
+
+				var href = this.getAttribute('href');
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					waiting: {
+						autoShow: true,
+						title: '拼命加载中...'
+					},
+
+				})
+
+			})
+
+			var getInfoData = {
+				"token": plus.storage.getItem('token')
+			}
+			mui.ajax(apiUrl + 'Maifen/maifen_info', {
+				data: getInfoData,
+				type: 'post',
+				timeout: 10000,
+				success: function(data) {
+					var data = JSON.parse(data);
+					if(data.status == 1) {
+						document.getElementById('gong-zi-info').innerHTML = '累计发放麦分总额：' + (data.data.total_mz_int ? data.data.total_mz_int : '0') + '<p class="mui-ellipsis">可用麦分：' + (data.data.maifen ? data.data.maifen : '0') + '</p>';
+						document.getElementById('btn-xinyongka').setAttribute('have-int-num', (data.data.maifen ? data.data.maifen : '0'));
+					}
+				},
+				beforeSend: function() {
+					plus.nativeUI.showWaiting("玩命加载中...", {
+						background: "rgba(0,0,0,0.5)"
+					});
+				},
+				complete: function() {
+					plus.nativeUI.closeWaiting();
+				},
+				error: function(xhr, typeinfo) {
+					if(typeinfo == 'abort') {
+						mui.alert('连接不到网络，请检查您当前的网络设置');
+					} else {
+						mui.alert('参数错误' + typeinfo);
+					}
+				}
+			});
+
+		})
+	</script>
+
+</html>

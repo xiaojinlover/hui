@@ -7,9 +7,8 @@ mui.init({
 			var zhiweiInfoData = {
 				"token":plus.storage.getItem('token')
 			}
-			if(plus.storage.getItem('role')!=3){
-				document.getElementById('li-zhi-shen-qing').setAttribute('class','mui-table-view mui-table-view-item'); 
-			}
+			
+			
 			mui.ajax(apiUrl +  'Employee/zhi_wei_info', {
 					data: zhiweiInfoData,
 					type: 'post',
@@ -31,6 +30,9 @@ mui.init({
 							document.getElementById('ru_zhi_shi_jian').innerHTML = data.data.ru_zhi_shi_jian!=null?data.data.ru_zhi_shi_jian:'暂无';
 							if(data.data.yuan_gong_zhuang_tai=='待离职'){
 								document.getElementById('li-zhi-shen-qing').innerHTML = '<li class="mui-table-view-divider"></li><li class="mui-table-view-cell mui-table-view-cell-sub"><a class="mui-navigate-right" data-action="che-xiao" href="setting-lzxx">撤销离职申请</a></li>'
+							}
+							if(data.data.yuan_gong_zhuang_tai!='在职'){ 
+								document.getElementById('li-zhi-shen-qing').setAttribute('class','mui-table-view mui-table-view-item mui-hidden');  
 							}
 						}else{
 							mui.alert(data.detail);

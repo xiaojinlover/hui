@@ -33,7 +33,9 @@
 			"index-boss.html",
 			"score-xjgz.html",
 			"shop.html",
-			"login.html"
+			"login.html",
+			"setting-gzzd.html",
+			"setting-gonggao.html"
 		]
 	},
 	"address.html": {
@@ -141,6 +143,27 @@
 			"dist/css/style.css",
 			"css/iconfont.woff",
 			"dist/css/mui.css"
+		]
+	},
+	"setting-gzt-detail.html": {
+		"resources": [
+			"buildNew/setting-gzt-detail.js"
+		]
+	},
+	"setting-gzzd.html": {
+		"resources": [
+			"js/common.js",
+			"dist/js/mui.js",
+			"css/iconfont.css",
+			"dist/css/style.css",
+			"buildNew/setting-gzzd.js",
+			"dist/css/mui.css",
+			"dist/fonts/mui.ttf"
+		]
+	},
+	"setting-gonggao.html": {
+		"resources": [
+			"buildNew/setting-gonggao.js"
 		]
 	}
 }

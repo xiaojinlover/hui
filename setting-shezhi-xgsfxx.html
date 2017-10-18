@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<link rel="stylesheet" href="css/buttons.css">
+		<link rel="stylesheet" href="css/mui.picker.css" />
+		<link rel="stylesheet" href="css/mui.poppicker.css" />
+		<title>慧人事</title>
+		<style type="text/css">
+			.mui-table-view-cell>.mui-active{
+				background-color: #fff !important;
+			}
+		
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>  
+	<body id="daili-zhaomu"> 
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">填写修改信息</h1>			
+		</header> 
+		<div class="mui-content"> 
+			<div class="mui-table-view-divider text-danger size14" id="bohui-yuanyin"></div>
+			<!--<div class="mui-table-view-divider"></div>-->
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>姓名<span class="text-danger"> *</span></label>   
+					<input type="text" name="real_name" />   
+				</div>				
+				<div class="mui-input-row">
+					<label>手机号码<span class="text-danger"> *</span></label>
+					<input type="text" name="telephone" />
+				</div>
+				
+				<h5>上传身份证正面照<span class="text-danger"> *</span></h5>
+				<div class="mui-btn-row"> 
+					<div class="img-box mui-pull-left"><img id="image-view" class="mui-hidden" src=""  data-preview-src="" data-preview-group="1" /></div>     
+					<div class="btn-box mui-pull-left" id="btn-box"><span class="iconfont icon-jia"></span></div>   
+					 <input type="hidden" name="file" id="file" />
+				</div>	
+				
+			</form>
+		</div>
+		<div class="mui-content-padded">
+			<button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="ti-jiao">提交</button>
+		</div>
+	</body> 
+	<script>
+		var h5pullDown = true;  
+	</script>
+	<script src="dist/js/mui.js"></script> 
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/mui.zoom.js"></script>
+	<script src="js/mui.previewimage.js"></script>
+	<script src="js/mui.poppicker.js"></script>
+	
+	<script>
+		mui.init({
+			swipeBack: true 
+		});
+		mui.previewImage(); 
+		mui.plusReady(function() {
+			//获取信息
+			var getData = {
+				"token":plus.storage.getItem('token')  
+			}
+			
+			mui.ajax(apiUrl + 'Employee/get_update_info', {
+				data: getData,
+				type: 'post',
+				timeout: 10000, 
+				success: function(data) {
+					
+					var data = JSON.parse(data);
+					if(data.data.update_status == 0){
+						$('#ti-jiao').attr('disabled',true).text('待审核');
+						document.forms[0].real_name.value = data.data.after_real_name;
+						document.forms[0].telephone.value = data.data.after_telephone;
+						$('#image-view').attr('src',data.data.card_image).removeClass('mui-hidden');
+						$('#file').val(data.data.card_image);
+					}else if(data.data.update_status == 2){
+						$('#ti-jiao').text('重新提交');
+						document.forms[0].real_name.value = data.data.after_real_name;
+						document.forms[0].telephone.value = data.data.after_telephone;
+						$('#image-view').attr('src',data.data.card_image).removeClass('mui-hidden');
+						$('#file').val(data.data.card_image);
+						$('#bohui-yuanyin').text('驳回原因：'+data.data.remark);
+					}
+				},
+				beforeSend: function() {
+					plus.nativeUI.showWaiting("加载中..."); 
+				},
+				complete: function() {
+					plus.nativeUI.closeWaiting();
+				},
+				error: function(xhr, typeinfo) {
+					if(typeinfo=='abort'){
+						mui.alert('连接不到网络，请检查您当前的网络设置');
+					}else{
+						mui.alert('参数错误' + typeinfo);
+					}
+				}
+			});
+			//提交修改信息
+			mui(document).on("tap", "#ti-jiao", function(e) { 
+				var after_name = document.forms[0].real_name.value;
+				var after_telephone = document.forms[0].telephone.value;
+				var card_image = document.forms[0].file.value;
+				if(after_name==''){
+					mui.alert('请输入您的姓名');
+					return false;
+				}else if(after_telephone==''){
+					mui.alert('请输入您的手机号码');
+					return false;
+				}else if(card_image==''){
+					mui.alert('请输上传您的身份证正面照');
+					return false;
+				}
+				var updateData = {
+					"token":plus.storage.getItem('token'),
+					"after_telephone":after_telephone,
+					"after_name":after_name,
+					"card_image":card_image
+				}
+				mui.ajax(apiUrl + 'Employee/apply_update_info', {
+					data: updateData,
+					type: 'post',
+					timeout: 10000, 
+					success: function(data) {
+						
+						var data = JSON.parse(data);
+						mui.alert(data.detail);
+					},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("上传中...");
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+					},
+					error: function(xhr, typeinfo) {
+						if(typeinfo=='abort'){
+							mui.alert('连接不到网络，请检查您当前的网络设置');
+						}else{
+							mui.alert('参数错误' + typeinfo);
+						}
+					}
+				});
+			})
+			//上传头像图片 
+			function uploadHead(imgPath) {
+
+				var image = new Image();
+				image.src = imgPath;
+				image.onload = function() {
+					
+					var imgData = getBase64Image(image);
+					$('#image-view').removeClass('mui-hidden');
+					document.getElementById('image-view').setAttribute('src', 'data:image/png;base64,' + imgData);
+					//调用上传接口
+					var uploadHeaderData = {
+						"token": plus.storage.getItem('token'),
+						"card_image":imgData
+					}
+					
+					mui.ajax(apiUrl + 'Employee/upload_card_image', {
+						data: uploadHeaderData,
+						type: 'post',
+						timeout: 10000, 
+						success: function(data) {							
+							var data = JSON.parse(data);
+							if(data.status == 1) {
+								$('#file').val(data.data.url);				
+								mui.toast(data.detail);
+							} else {
+								mui.alert(data.detail);
+							}
+						},
+						beforeSend: function() {
+							plus.nativeUI.showWaiting("上传中...");
+						},
+						complete: function() {
+							plus.nativeUI.closeWaiting();
+						},
+						error: function(xhr, typeinfo) {
+							if(typeinfo=='abort'){
+								mui.alert('连接不到网络，请检查您当前的网络设置');
+							}else{
+								mui.alert('参数错误' + typeinfo);
+							}
+						}
+					});
+					
+					
+				}
+			}
+			//点击头像触发
+			mui(document).on("tap", "#btn-box", function(e) { 
+				if(mui.os.plus) {
+					var a = [{
+						title: "拍照"
+					}, {
+						title: "从手机相册选择"
+					}];
+					plus.nativeUI.actionSheet({
+						title: "上传身份证正面照",
+						cancel: "取消",
+						buttons: a
+					}, function(b) {
+						switch(b.index) {
+							case 0:
+								break;
+							case 1:
+								getImage(); /*拍照*/
+								break;
+							case 2:
+								galleryImg(); /*打开相册*/
+								break;
+							default:
+								break
+						}
+					})
+				}
+			});
+			//拍照
+			function getImage() {
+				var c = plus.camera.getCamera();
+				c.captureImage(function(e) {
+					plus.io.resolveLocalFileSystemURL(e, function(entry) {
+						var s = entry.toLocalURL() + "?version=" + new Date().getTime();						
+						
+						if(isAndroidIos()=='isIos'){
+							//旋转图片
+							plus.zip.compressImage({
+									src:s,
+									dst:s,
+									overwrite:true,
+									rotate:-90,										
+								},
+								function() {									
+									uploadHead(s); /*上传图片*/
+								},function(error) {
+									console.log("旋转失败!");
+							});
+						}else{
+
+							uploadHead(s); /*上传图片*/
+						}
+						
+
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(s) {
+					console.log("error" + s);
+				}, {
+					filename: "_doc/jiameng.png"
+				})
+			}
+			//本地相册选择
+			function galleryImg() {
+				plus.gallery.pick(function(a) {
+					plus.io.resolveLocalFileSystemURL(a, function(entry) {
+						plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+							
+							root.getFile("jiameng.png", {}, function(file) {								
+								//文件已存在
+								file.remove(function() {									
+									entry.copyTo(root, 'jiameng.png', function(e) {
+											var path = e.fullPath + "?version=" + new Date().getTime();
+											uploadHead(path);
+										},
+										function(e) {
+											console.log('copy image fail:' + e.message);
+										});
+								}, function() {
+									console.log("delete image fail:" + e.message);
+								});
+							}, function() { 
+								//文件不存在
+								entry.copyTo(root, 'jiameng.png', function(e) {
+										var path = e.fullPath + "?version=" + new Date().getTime();
+
+										uploadHead(path);
+									},
+									function(e) {
+										console.log('copy image fail:' + e.message);
+									});
+							});
+						}, function(e) {
+							console.log("get _www folder fail");
+						})
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(a) {}, {   
+					filter: "image"
+				})
+			};
+			//将图片压缩转成base64 
+			function getBase64Image(img) {
+				var canvas = document.createElement("canvas"); 
+				var imgwidth = img.width;
+				
+				if(imgwidth<=960){
+					var imgwidth = img.width/2;
+					var imgheight = img.height/2;
+				}else if(imgwidth>960&&imgwidth<2448){
+					var imgwidth = img.width/3;
+					var imgheight = img.height/3;
+				}else{
+					var imgwidth = img.width/6;
+					var imgheight = img.height/6;
+				}
+				
+				//裁剪图片
+				var top = 0;
+				var left = 0;
+				
+				canvas.width = imgwidth; /*设置新的图片的宽度*/
+				canvas.height = imgheight; /*设置新的图片的长度*/
+				var ctx = canvas.getContext("2d");
+				
+				ctx.drawImage(img, -left, -top, imgwidth, imgheight); /*绘图*/
+				var dataURL = canvas.toDataURL("image/png", 0.1);
+				return dataURL.replace("data:image/png;base64,", "");
+			} 
+		})
+	</script>
+	
+</html>
