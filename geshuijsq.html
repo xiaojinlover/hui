@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css">
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
+		<style>
+			.mui-icon-clear::before{
+				color: #fb6856;
+				padding-top: 100px;;
+			}
+			.mui-icon-clear{
+				line-height: 30px;				
+			}
+			.mui-input-row input{
+				padding-right: 32px;
+			}
+		</style>
+	</head>
+
+	<body id="setting-lzxx">
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">个税计算器</h1>
+		</header>
+		<div class="mui-content">
+			<form class="" style="margin-top: 10px;">
+				<div class="mui-input-group">
+					<div class="mui-input-row">
+						<label>税前工资</label>
+						<input type="text" class="mui-input-clear size14" name="shui-qian-gong-zi" placeholder="请输入税前工资">
+					</div>
+					<div class="mui-input-row">
+						<label>各项社保费</label>
+						<input type="text" class="mui-input-clear size14" name="mian-zheng-e" placeholder="请输入不计税工资">
+					</div>
+					<div class="mui-input-row mui-select">
+						<label>起征点</label>
+						<select class="size14" name="qi-zheng-dian">
+							<option value="3500">3500</option>
+							<option value="4800">4800</option>
+						</select>
+					</div>
+				</div>
+				<div class="mui-content-padded">
+					<button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="ji-suan">计算</button>
+				</div>
+			</form>
+			<div class="mui-card mui-hidden" id="result">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner">
+						<ul class="mui-table-view text-666">
+							<li class="mui-table-view-cell">应纳税额：<span class="mui-pull-right text-blue" id="tax1"></span></li>
+							<li class="mui-table-view-cell">应缴税款：<span class="mui-pull-right text-blue" id="tax2"></span></li>
+							<li class="mui-table-view-cell">实发工资：<span class="mui-pull-right text-blue" id="tax3"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script>
+		mui.plusReady(function() {
+			//个税计算
+			var result = new Object();
+
+			function calculate_income(income, insure, baseLine, result) {
+
+				var taxableIncome = income - insure - baseLine;
+
+				if(taxableIncome <= 0) {
+					result.tax = 0;
+					result.realIncome = income;
+					return;
+				}
+
+				var R, Q;
+				var A = taxableIncome;
+				A = A.toFixed(2);
+				if(A <= 1500) {
+					R = 0.03;
+					Q = 0;
+				} else if(A > 1500 && A <= 4500) {
+					R = 0.1;
+					Q = 105
+				} else if(A > 4500 && A <= 9000) {
+					R = 0.2;
+					Q = 555
+				} else if(A > 9000 && A <= 35000) {
+					R = 0.25;
+					Q = 1005
+				} else if(A > 35000 && A <= 55000) {
+					R = 0.3;
+					Q = 2755
+				} else if(A > 55000 && A <= 80000) {
+					R = 0.35;
+					Q = 5505
+				} else {
+					R = 0.45;
+					Q = 13505;
+				}
+
+				result.tax = taxableIncome * R - Q;
+				result.realIncome = income - insure - result.tax;
+			}
+			//        calculate_income(20000, 0, 3500, result);calculate_income(shui_qian_gong_zi, 0, 3500 + mian_zheng_e*1, result);
+			$('#ji-suan').on('click', function() {
+				var shui_qian_gong_zi = $('input[name="shui-qian-gong-zi"]').val();
+				var mian_zheng_e = $('input[name="mian-zheng-e"]').val();
+				var qi_zheng_dian = $('select[name="qi-zheng-dian"]').val();
+
+				if(shui_qian_gong_zi == '' || isNaN(shui_qian_gong_zi)) {
+					alert('请正确输入税前工资！');
+					return false;
+				}
+				if(isNaN(mian_zheng_e)) {
+					alert('请正确输入各项社保费！');
+					return false;
+				}
+
+				calculate_income(shui_qian_gong_zi, mian_zheng_e * 1, qi_zheng_dian * 1, result);				
+				$('#result').removeClass('mui-hidden');
+				if(shui_qian_gong_zi * 1 - (mian_zheng_e * 1 + qi_zheng_dian * 1) < 0)
+					$('#tax1').text(0.00);
+				else
+					$('#tax1').text((shui_qian_gong_zi * 1 - (mian_zheng_e * 1 + qi_zheng_dian * 1)).toFixed(2));
+				$('#tax2').text(result.tax.toFixed(2));
+				$('#tax3').text((result.realIncome*1).toFixed(2));
+			})
+		})
+	</script>
+
+</html>

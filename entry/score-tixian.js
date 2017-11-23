@@ -159,11 +159,11 @@ mui.init({
 							type: 'post',
 							timeout: 10000,
 							success: function(data) {
-								
+								 
 								var data = JSON.parse(data);
 								if(data.status == 1){
 									document.forms[0].reset();
-									mui.alert(data.detail);
+									mui.alert(data.data.message,data.detail);
 									document.getElementById('have-int-num').innerHTML = ((document.getElementById('have-int-num').innerHTML)*1-tran_total).toFixed(2);
 									plus.webview.currentWebview().opener().reload();
 								} else{

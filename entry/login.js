@@ -87,7 +87,7 @@ mui.init({
 					type: 'post',
 					timeout: 10000,
 					success: function(data) {
-						console.log(data)
+						console.log(data) 
 						var data = JSON.parse(data);
 						
 						if(data.status == 1) {

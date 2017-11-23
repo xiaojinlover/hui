@@ -59,12 +59,12 @@
 			}
 		}
 
-		if (activeTab) {
+		if (activeTab && activeTab.parentElement.classList!="mui-bar mui-bar-tab") {
 			activeTab.classList.remove(className);
 		}
 
 		var isLastActive = targetTab === activeTab;
-		if (targetTab) {
+		if (activeTab && activeTab.parentElement.classList!="mui-bar mui-bar-tab") {
 			targetTab.classList.add(className);
 		}
 

@@ -25,7 +25,8 @@ mui.init({
 					success: function(data) {
 						
 						var data = JSON.parse(data);
-						if(data.status == 0) {							
+						if(data.status == 0) {		
+							mui.alert(data.detail);
 							return false;
 						} else {
 							//计时器函数

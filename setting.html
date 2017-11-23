@@ -175,16 +175,20 @@
 		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item" href="index">
-				<span class="mui-icon icon iconfont icon-home"></span>
+				<span class="mui-icon icon iconfont icon-icon-test9"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
+			<a class="mui-tab-item" href="fortune">
+				<span class="mui-icon icon iconfont icon-icon-test13"></span>
+				<span class="mui-tab-label">财富</span>
+			</a>
 			<a class="mui-tab-item" href="address">
-				<span class="mui-icon icon iconfont icon-icon-test"></span>
+				<span class="mui-icon icon iconfont icon-icon-test11"></span>
 				<span class="mui-tab-label">商城</span>
 			</a>
 			<a class="mui-tab-item mui-active" href="setting">
-				<span class="mui-icon icon iconfont icon-setting1"></span>
-				<span class="mui-tab-label">我的</span>
+				<span class="mui-icon icon iconfont icon-icon-test16"></span> 
+				<span class="mui-tab-label">我的</span> 
 			</a>
 		</nav>
 		<div class="mui-content">
@@ -200,6 +204,12 @@
 			</ul>
 			<ul class="mui-table-view mui-table-view-item">
 				<li class="mui-table-view-divider" id="ji-ben-zi-liao-divider"></li>
+				<li class="mui-table-view-cell mui-table-view-cell-sub" id="gong-zi-tiao">
+					<a class="mui-navigate-right" href="setting-gzt">
+						<i class="mui-icon mui-icon-star-filled" style="font-size: 22px; margin-left: -4px;"></i>工资条
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li>
 				<li class="mui-table-view-cell mui-table-view-cell-sub" id="ji-ben-zi-liao">
 					<a class="mui-navigate-right " href="setting-wdll-grzl">
 						<i class="icon iconfont icon-setting01"></i>基本资料
@@ -210,7 +220,7 @@
 						<i class="icon iconfont icon-setting03"></i>职位信息
 					</a>
 				</li>
-				<li class="mui-table-view-divider" id="gong-zi-tiao-divider"></li> 
+				
 				
 				<!--<li class="mui-table-view-cell mui-table-view-cell-sub">
 					<a class="mui-navigate-right" href="setting-dnfw">
@@ -222,26 +232,21 @@
 						<i class="icon iconfont icon-setting04"></i>离职申请
 					</a>
 				</li>
-						
+						-->
 				
-				<li class="mui-table-view-cell mui-table-view-cell-sub">
+				<li class="mui-table-view-cell mui-table-view-cell-sub" id="gong-gao">
 					<a class="mui-navigate-right" href="setting-gonggao">
 						<i class="icon iconfont icon-setting05"></i>公告
 					</a>
 				</li>
 				
-				<li class="mui-table-view-cell mui-table-view-cell-sub">
+				<li class="mui-table-view-cell mui-table-view-cell-sub" id="zhi-du">
 					<a class="mui-navigate-right" href="setting-gzzd">
 						<i class="mui-icon mui-icon-star-filled" style="font-size: 22px; margin-left: -4px;"></i>制度
 					</a>
-				</li>-->
-				
-				<li class="mui-table-view-cell mui-table-view-cell-sub" id="gong-zi-tiao">
-					<a class="mui-navigate-right" href="setting-gzt">
-						<i class="mui-icon mui-icon-star-filled" style="font-size: 22px; margin-left: -4px;"></i>工资条
-					</a>
 				</li>
-				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-divider"></li> 
+				
 				<li class="mui-table-view-cell mui-table-view-cell-sub">
 					<a class="mui-navigate-right" href="setting-yjfk">
 						<i class="icon iconfont icon-yijian"></i>意见反馈
@@ -282,23 +287,19 @@ mui.init({
 			document.getElementById('head-img1').setAttribute('src',plus.storage.getItem('users_image'));
 			document.getElementById('xing-ming').innerHTML = plus.storage.getItem('real_name') + '<p class="mui-ellipsis" >' + (plus.storage.getItem('zhi_wei') != null ? plus.storage.getItem('zhi_wei') : '暂无') + '</p>';
 			
-			if(plus.storage.getItem('if_company')==1){
-				document.getElementById('ji-ben-zi-liao').className = 'mui-hidden';
-				document.getElementById('zhi-wei-xin-xi').className = 'mui-hidden';
-				document.getElementById('ji-ben-zi-liao-divider').className = 'mui-hidden';
-				document.getElementById('gong-zi-tiao-divider').className = 'mui-hidden';
-				document.getElementById('gong-zi-tiao').className = 'mui-hidden';
+			if(plus.storage.getItem('ruzhi-status') == '离职' || plus.storage.getItem('ruzhi-status') == '待入职') {
+				document.getElementById('gong-gao').setAttribute('class', 'mui-table-view-cell mui-table-view-cell-sub mui-hidden');
+				document.getElementById('zhi-du').setAttribute('class', 'mui-table-view-cell mui-table-view-cell-sub mui-hidden');
+			} else {
+				document.getElementById('gong-gao').setAttribute('class', 'mui-table-view-cell mui-table-view-cell-sub');
+				document.getElementById('zhi-du').setAttribute('class', 'mui-table-view-cell mui-table-view-cell-sub');
 			}
 			
 			//选项卡
 			mui('.mui-bar-tab').on('tap', 'a', function(e) {
 					
 					var href = this.getAttribute('href');
-					if(href == "index" && plus.storage.getItem('if_company') == 1) {
-						href = "index-boss";
-					} else if(href == "index" && plus.storage.getItem('if_company') != 1){
-						href = "index";
-					}
+					
 					if(href=='address'){
 						if(plus.storage.getItem('if_reg') == '1') {
 							href = 'shop';
@@ -326,6 +327,10 @@ mui.init({
 			mui('.mui-table-view-cell-sub').on('tap', 'a', function(e) {
 
 				var href = this.getAttribute('href');
+				if(href == 'setting-zwxx' && plus.storage.getItem('ruzhi-status')=='离职'){
+					mui.toast('您还未入职');
+					return false;
+				}
 				
 				mui.openWindow({
 					url: href + '.html',

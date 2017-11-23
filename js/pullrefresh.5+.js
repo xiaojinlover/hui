@@ -4,7 +4,7 @@
  * @returns {undefined}
  */
 (function($, document) {
-    if (!($.os.plus && $.os.android)) { //仅在5+android支持多webview的使用
+    if (!($.os.plus && $.os.android) || h5pullDown) { //仅在5+android支持多webview的使用
         return;
     }
     $.plusReady(function() {

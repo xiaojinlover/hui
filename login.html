@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -8,62 +8,194 @@
 		<meta name="HandheldFriendly" content="true" />
 		<link rel="stylesheet" href="dist/css/mui.css">
 		<link rel="stylesheet" href="dist/css/style.css">
-		<link rel="stylesheet" href="css/iconfont.css"> 
-		<title>慧人事</title> 
+		<link rel="stylesheet" href="css/iconfont.css">
+		<title>慧人事</title>
 	</head>
-
+	<style>
+		html{
+			height: 100%;  
+		}
+	</style>   
 	<body id="login">
-
-		<div class="mui-content">   
-			<div class="logo"> <br /><img src="images/logo.png" /> <br /></div>    
+		<div id="xitonglan" class="mui-bar mui-bar-nav" style="height: 20px;background-color: ;"></div>
+		
+		<div class="mui-content">
+			<div class="logo"> <br /><img src="images/logo.png" /> <br /><br /></div>    
+			
 			<div class="mui-content-padded"> 
-				<form class="mui-input-group">  
-					<div class="mui-input-row">
+				<form class="mui-input-group"> 
+					<div class="mui-input-row">    
 						<label><i class="icon iconfont icon-zhanghao"></i></label>
 						<input name="username" id="username" type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
-					</div>
+					</div> 
 					<div class="mui-input-row">  
 						<label><i class="icon iconfont icon-xiugaimima"></i></label>
 						<input name="password" id="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
-					</div>
-					<!--<div class="link-area">
-						<a href="#" id="btn-findpsw">忘记密码</a>
-					</div>-->
-					<div class="mui-row">
-						<div class="mui-col-xs-6">
-							<div class="mui-input-row mui-radio mui-left">
-								<label>个人登录</label>
-								<input name="if_company" checked="checked" value="0" type="radio">
-							</div>
-						</div> 
-						<div class="mui-col-xs-6"> 
-							<div class="mui-input-row mui-radio mui-left">
-								<label>企业登录</label>
-								<input name="if_company" value="1" type="radio">   
-							</div>
-						</div>
-					</div>
-					
-					<br  />  
-					<a class="mui-btn mui-btn-block btn-login" id="btn-login">登录</a>
-					<div class="mui-row">
-						<div class="mui-col-xs-6" style="padding-right: 5px;">
-							<a href="#" id="btn-qiye-register1" class="mui-btn mui-btn-block mui-btn-outlined" style="font-size: 16px;">企业用户注册</a>
-						</div>
-						<div class="mui-col-xs-6" style="padding-left: 5px;">
-							<a class="mui-btn mui-btn-block mui-btn-outlined"  id="btn-register" style="font-size: 16px;">个人用户注册</a>
-						</div>
-					</div>
-				</form>
-				<a href="#" id="btn-findpsw" class="btn-qiye-register mui-pull-right">忘记密码</a> 				
-			</div> 
+					</div> 				    		
+				</form> 
+				
+				<div class="link-area">  
+					<a id="btn-register">新用户注册</a>
+					<a id="btn-findpsw" class="mui-pull-right">忘记密码</a>
+				</div>
+				
+				<a id="btn-login" class="mui-btn mui-btn-block mui-btn-primary">登录</a>      
+				
+				
+			</div>
 		</div>
 	</body>
-	<script>var h5pullDown = true;</script>
+	<script>
+		var h5pullDown = true; 
+	</script>
 	<script src="dist/js/mui.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/jquery-2.1.1.js"></script>
-	<script src="buildNew/login.js"></script>  
+	<!--<script src="buildNew/login.js"></script>-->
+	<script>
+		mui.init({
+			swipeBack: true
+		});
+
+		mui.plusReady(function() { 
+			
+			//跳转注册
+			//			document.getElementById('btn-register').addEventListener('tap', function() {
+			mui(document).on('tap', '#btn-register', function() {
+				mui.openWindow({    
+					url: 'register.html',
+					id: 'resetpsw',
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: 'slide-in-bottom',
+						duration: 200
+					},
+					waiting: {
+						autoShow: false  
+					}
+				});
+			}); 
+			 
+			//跳转找回密码
+			
+			mui(document).on('tap', '#btn-findpsw', function() {
+				mui.openWindow({
+					url: 'findpsw.html',
+					id: 'resetpsw',
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: 'slide-in-right',
+						duration: 200
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			});
+
+			//登录
+		
+
+			mui(document).on('tap', '#btn-login', function() {
+				var form = document.getElementsByTagName('form')[0];
+				var if_company = $('input[type="radio"]:checked').val();
+				//关闭焦点（失去键盘）
+				
+				document.activeElement.blur();
+				var loginData = {
+					"user_name": form.username.value,
+					"password": form.password.value,
+					"if_company": if_company
+				}
+				//验证表单
+				if(!form.username.value) {
+					mui.alert('请输入您的账号！');
+					return false;
+				} else if(!form.password.value) {
+					mui.alert("请输入您的密码！");
+					return false;
+				}
+				//提交数据
+				var telephone = form.username.value;
+				//				var password = document.getElementById("password");
+				mui.ajax(apiUrl + 'login/login', {
+					data: loginData,
+					type: 'post',
+					timeout: 10000,
+					success: function(data) {
+						
+						var data = JSON.parse(data);
+
+						if(data.status == 1) {
+							plus.storage.setItem("companyname", data.data.company_name);
+							plus.storage.setItem("username", telephone);
+							plus.storage.setItem("password", data.data.password);
+							plus.storage.setItem("token", data.token);
+							plus.storage.setItem("role", data.data.role);
+							plus.storage.setItem("zhi_wei", data.data.zhi_wei);
+							plus.storage.setItem("real_name", data.data.real_name);
+							plus.storage.setItem('telephone_key', data.data.telephone_key);
+							plus.storage.setItem('if_company', data.data.if_company)
+							//会员头像
+							plus.storage.setItem("users_image", data.data.users_image != null ? data.data.users_image : 'images/test-head.png');
+
+							if(data.data.if_company == 1) {
+								mui.openWindow({
+									url: 'index-boss.html',
+									id: 'index-boss',
+									createNew: true,
+									show: {
+										autoShow: true,
+										aniShow: 'slider-in-right',
+										duration: 200
+									},
+									waiting: {
+										autoShow: false
+									}
+								})
+							} else {
+								mui.openWindow({
+									url: 'index.html',
+									id: 'index',
+									createNew: true,
+									show: {
+										autoShow: true,
+										aniShow: 'slider-in-right',
+										duration: 200
+									},
+									waiting: {
+										autoShow: false
+									}
+								})
+
+							}
+
+						} else {
+							mui.alert(data.detail);
+						}
+
+					},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("数据提交中...");
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+					},
+					error: function(xhr, typeinfo) {
+						if(typeinfo == 'abort') {
+							mui.alert('连接不到网络，请检查您当前的网络设置');
+						} else {
+							mui.alert('参数错误' + typeinfo);
+						}
+					}
+				});
+			})
+			
+			$('#xitonglan').css('height',plus.navigator.getStatusbarHeight());
+		})
 	
-	
+	</script>
+
 </html>

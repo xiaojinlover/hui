@@ -40,6 +40,31 @@
 		}
 	};
 	var ajaxSuccess = function(data, xhr, settings) {
+		
+		//多点登陆
+		
+		if(JSON.parse(data).detail=='请重新登录'&&plus.storage.getItem('token')!=null){ 
+			plus.storage.clear();
+			plus.nativeUI.closeWaiting();
+			mui.alert('请重新登录','',function(){
+				mui.openWindow({
+					url: 'login.html',
+					id: 'login', 
+					createNew: false,  
+					show: {
+						autoShow: true,
+						aniShow: 'slider-in-right',
+						duration: 200
+					},
+					waiting: {
+						autoShow: false 
+					}
+				})
+			})
+			
+			return; 
+		}
+		
 		settings.success.call(settings.context, data, 'success', xhr);
 		ajaxComplete('success', xhr, settings);
 	};

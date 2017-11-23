@@ -110,6 +110,9 @@
 		"Push": {}
 	},
 	"plus": {
+		"statusbar": {
+	        "immersed": true
+	   },
 		"splashscreen": {
 			"autoclose": true,
 			"waiting": true,
@@ -129,8 +132,7 @@
 				"urlschemewhitelist": [
 					"baidumap",
 					"iosamap"
-				],
-				"UIReserveStatusbarOffset": false,
+				],				
 				"shortcuts": [
 					{
 						"type": "share",
@@ -378,7 +380,10 @@
 					"setting-gzzd.html",
 					"daili.html",
 					"ruzhi-wdll-grzl.html",
-					"score-zsjf.html"
+					"score-zsjf.html",
+					"fortune.html",
+					"licai.html",
+					"score-maifen.html"
 				],
 				"priority": 0
 			},
@@ -1584,7 +1589,8 @@
 					"setting-zwxx.html",
 					"setting-gzzd.html",
 					"setting-gywm.html",
-					"setting-wdll-grzl.html"
+					"setting-wdll-grzl.html",
+					"authorize-login.html"
 				],
 				"priority": 0
 			},
@@ -1887,7 +1893,9 @@
 					"images/logo-white.png",
 					"build/setting-zwxx.js"
 				],
-				"refer": [],
+				"refer": [
+					"setting-lzxx.html"
+				],
 				"priority": 0
 			},
 			"index-boss-yghmc.html": {
@@ -2337,6 +2345,35 @@
 					"buildNew/setting-gzt-detail.js"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"fortune.html": {
+				"resources": [],
+				"refer": [
+					"setting.html",
+					"setting-gzzd.html",
+					"authorize-login.html",
+					"setting-zwxx.html",
+					"index.html",
+					"score-xjgz.html",
+					"score-maifen.html"
+				],
+				"priority": 0
+			},
+			"bank-card-list.html": {
+				"resources": [],
+				"refer": [
+					"bank-card-delet.html",
+					"bind-bank-card.html"
+				],
+				"priority": 0
+			},
+			"score-maifen.html": {
+				"resources": [],
+				"refer": [
+					"score-maifen-mingxi.html",
+					"bank-card-list.html"
+				],
 				"priority": 0
 			}
 		},

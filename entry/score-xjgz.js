@@ -7,7 +7,8 @@ mui.init({
 			mui('.mui-media').on('tap','a', function(e) {
 				
 				var href = this.getAttribute('href');
-				
+				var licaiName = '';
+				var url = '';
 				if(href=="score-tixian"||href == "zhongda-chongzhi"){
 					var haveIntNum = this.getAttribute('have-int-num');
 					if(href == "zhongda-chongzhi"){
@@ -16,7 +17,13 @@ mui.init({
 					}
 				}
 				if(href == 'select-tongshi'){
-					var haveIntNum = this.getAttribute('have-int-num');					
+					var haveIntNum = this.getAttribute('have-int-num');	
+					
+				}
+				if(href=='https://www.mszxyh.com/wapserver/outer/index.html?ChannelId=mszx02489&seq=DZZH_20171114129341&Page=Login'){
+					licaiName = '开通电子账户';
+					url = href;
+					href = 'licai';
 				}
 				mui.openWindow({
 					url: href+'.html',
@@ -27,7 +34,9 @@ mui.init({
 						aniShow: "slide-in-right"
 					},
 					extras:{
-						'haveIntNum':haveIntNum
+						'haveIntNum':haveIntNum,
+						'licaiName':licaiName,
+						'Url':url
 					},
 					waiting: {
 						autoShow: true,

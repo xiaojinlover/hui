@@ -22,7 +22,7 @@ mui.init({
 							
 //								gonggaoListHtml += '<li class="mui-table-view-cell" style="height:50px;line-height:30px;"><a doc-url="' + item.doc_url + '" href="setting-gzzd-detail" data-id="' + item.id + '" class="mui-navigate-right"><i class="icon iconfont icon-iconfonticon text-999"></i>  ' + item.title   + '</a></li>';
 								
-								gonggaoListHtml += '<li class="mui-table-view-cell mui-media"><a doc-url="' + item.doc_url + '" href="setting-gzzd-detail" data-id="' + item.id + '" class="mui-navigate-right"><div class="mui-media-body"><i class="icon iconfont icon-iconfonticon text-999"></i>  ' + item.title   + '<p class="mui-ellipsis">' + item.add_time + '</p></div></a></li>'
+								gonggaoListHtml += '<li class="mui-table-view-cell mui-media"><a doc-url="' + item.doc_url + '" href="setting-gzzd-detail" data-id="' + item.id + '" class="mui-navigate-right"><div class="mui-media-body"><i class="icon iconfont icon-iconfonticon text-999"></i>  ' + item.title   + '<p class="mui-ellipsis">' + item.add_time + '</p></div></a><span class="mui-badge mui-badge-warning">5</span></li>'
 							})
 							document.getElementById('gonggao-list').innerHTML = gonggaoListHtml;
 						} 

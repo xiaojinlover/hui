@@ -35,7 +35,12 @@
 			"shop.html",
 			"login.html",
 			"setting-gzzd.html",
-			"setting-gonggao.html"
+			"setting-gonggao.html",
+			"authorize-login.html",
+			"setting-zwxx.html",
+			"fortune.html",
+			"licai.html",
+			"score-maifen.html"
 		]
 	},
 	"address.html": {
@@ -43,7 +48,8 @@
 			"buildNew/address.js",
 			"css/mui.indexedlist.css",
 			"js/mui.indexedlist.js"
-		]
+		],
+		"refer": []
 	},
 	"setting.html": {
 		"resources": [
@@ -55,13 +61,16 @@
 		],
 		"refer": [
 			"index.html",
-			"setting-shezhi.html"
+			"setting-shezhi.html",
+			"setting-wdll-grzl.html",
+			"authorize-login.html"
 		]
 	},
 	"daili.html": {
 		"resources": [
 			"css/buttons.css"
-		]
+		],
+		"refer": []
 	},
 	"index-boss.html": {
 		"resources": [
@@ -78,7 +87,8 @@
 	"index-boss-ygtj.html": {
 		"resources": [
 			"buildNew/index-boss-ygtj.js"
-		]
+		],
+		"refer": []
 	},
 	"score-xjgz.html": {
 		"resources": [
@@ -95,6 +105,9 @@
 			"css/iconfont.woff",
 			"dist/css/mui.css",
 			"dist/fonts/mui.ttf"
+		],
+		"refer": [
+			"bank-card-list.html"
 		]
 	},
 	"login.html": {
@@ -131,7 +144,8 @@
 			"dist/css/style.css",
 			"dist/css/mui.css",
 			"dist/fonts/mui.ttf"
-		]
+		],
+		"refer": []
 	},
 	"register.html": {
 		"resources": [
@@ -143,12 +157,14 @@
 			"dist/css/style.css",
 			"css/iconfont.woff",
 			"dist/css/mui.css"
-		]
+		],
+		"refer": []
 	},
 	"setting-gzt-detail.html": {
 		"resources": [
 			"buildNew/setting-gzt-detail.js"
-		]
+		],
+		"refer": []
 	},
 	"setting-gzzd.html": {
 		"resources": [
@@ -159,11 +175,45 @@
 			"buildNew/setting-gzzd.js",
 			"dist/css/mui.css",
 			"dist/fonts/mui.ttf"
-		]
+		],
+		"refer": []
 	},
 	"setting-gonggao.html": {
 		"resources": [
 			"buildNew/setting-gonggao.js"
-		]
+		],
+		"refer": []
+	},
+	"setting-zwxx.html": {
+		"refer": [
+			"setting-lzxx.html"
+		],
+		"resources": []
+	},
+	"fortune.html": {
+		"refer": [
+			"setting.html",
+			"setting-gzzd.html",
+			"authorize-login.html",
+			"setting-zwxx.html",
+			"index.html",
+			"score-xjgz.html",
+			"score-maifen.html"
+		],
+		"resources": []
+	},
+	"bank-card-list.html": {
+		"refer": [
+			"bank-card-delet.html",
+			"bind-bank-card.html"
+		],
+		"resources": []
+	},
+	"score-maifen.html": {
+		"refer": [
+			"score-maifen-mingxi.html",
+			"bank-card-list.html"
+		],
+		"resources": []
 	}
 }

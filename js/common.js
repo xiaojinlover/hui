@@ -1,5 +1,5 @@
 var h5pullDown = true;
-var apiUrl = "http://newtest.huirenshi.com/v2/"; 
+var apiUrl = "http://newtest.huirenshi.com/v2/";
 //打开窗口函數
 function _openWindow(url) {
 	mui.openWindow({
@@ -20,13 +20,13 @@ function _openWindow(url) {
 
 //删除数组元素
 function removeByValue(arr, val) {
-  for(var i=0; i<arr.length; i++) {
-    if(arr[i] == val) {
-      arr.splice(i, 1);
-      break;
-    }
-  }
-} 
+	for(var i = 0; i < arr.length; i++) {
+		if(arr[i] == val) {
+			arr.splice(i, 1);
+			break;
+		}
+	}
+}
 
 //判断IOS或Andriod
 function isAndroidIos() {
@@ -39,8 +39,6 @@ function isAndroidIos() {
 		return 'isIos';
 	}
 }
-
-
 
 //html转义
 function html_decode(str) {
@@ -66,27 +64,28 @@ function html_clean(str) {
 
 mui.plusReady(function() {
 	//系统状态栏
-	plus.navigator.setStatusBarBackground("#259cf0");
+	plus.navigator.setStatusBarBackground("#f2595e");
 	plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
-//	alert(plus.webview.getWebviewById('login'))
+//		alert(plus.navigator.getStatusbarHeight())
+	//	alert(plus.webview.getWebviewById('login'))
 	//判断登录状态(通过Token,去除不需要判断的页面)
 	var username = plus.storage.getItem("username");
 	var password = plus.storage.getItem("password");
 	var token = plus.storage.getItem('token');
 	var _currentUrl = plus.webview.currentWebview().getURL();
-	if((plus.webview.currentWebview().id=='login'||plus.webview.currentWebview().id=='HBuilder')&&token != null){
-		return false; 
-	}	
-	
+	if((plus.webview.currentWebview().id == 'login' || plus.webview.currentWebview().id == 'HBuilder') && token != null) {
+		return false;
+	}
+
 	if(token == null && _currentUrl.indexOf("login.html") < 0 && _currentUrl.indexOf("qiye-zhuce-step03.html") < 0 && _currentUrl.indexOf("setting-shezhi-yhxy.html") < 0 && _currentUrl.indexOf("qiye-zhuce-step02.html") < 0 && _currentUrl.indexOf("register.html") < 0 && _currentUrl.indexOf("findpsw.html") < 0 && _currentUrl.indexOf("resetpsw.html") < 0 && _currentUrl.indexOf("qiye-zhuce-step01.html") < 0) {
-		if(plus.webview.getWebviewById('login')!=null)
-			createNew=false;
+		if(plus.webview.getWebviewById('login') != null)
+			createNew = false;
 		else
-			createNew=true;
+			createNew = true;
 		mui.openWindow({
 			url: 'login.html',
 			id: 'login',
-			createNew: createNew,  
+			createNew: createNew,
 			show: {
 				autoShow: true,
 				aniShow: 'slider-in-right',
@@ -97,5 +96,36 @@ mui.plusReady(function() {
 			}
 		})
 	}
+//	if(plus.webview.currentWebview().id=='login')
+//		return false;
+	
 })
 
+(function(w) {
+		document.addEventListener('plusready', function() {
+	//		console.log("Immersed-UserAgent: " + navigator.userAgent);
+		}, false);
+	
+		var immersed = 0;
+		var ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+		if(ms && ms.length >= 3) {
+			immersed = parseFloat(ms[2]);
+		}
+		w.immersed = immersed;
+	
+		if(!immersed) {
+			return;
+		}
+		var t = document.getElementsByTagName('header')[0];
+		//t&&(t.style.paddingTop=immersed+'px',t.style.background='-webkit-linear-gradient(top,rgba(215,75,40,1),rgba(215,75,40,0.8))',t.style.color='#FFF');
+		t && (t.style.paddingTop = immersed + 'px', t.style.background = '#f2595e', t.style.color = '#259cef');
+		t = document.getElementById('content');
+		t && (t.style.marginTop = immersed + 'px');
+		t = document.getElementById('scontent');
+		t && (t.style.marginTop = immersed + 'px');
+		t = document.getElementById('dcontent');
+		t && (t.style.marginTop = immersed + 'px');
+		t = document.getElementById('map');
+		t && (t.style.marginTop = immersed + 'px');
+	
+	})(window);

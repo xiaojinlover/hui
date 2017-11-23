@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta name="misapplication-tap-highlight" content="no" />
+		<meta name="HandheldFriendly" content="true" />
+		<link rel="stylesheet" href="dist/css/mui.css">
+		<link rel="stylesheet" href="dist/css/style.css"> 
+		<link rel="stylesheet" href="css/iconfont.css">		
+		<link rel="stylesheet" href="css/buttons.css" />
+		<title>慧人事</title>
+		<style>
+			#pullrefresh {
+				padding-bottom: 54px;
+			}
+		</style>  
+	</head>
+
+	<body id="fortune"> 
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="mui-content">
+					<!--<a class="mui-btn mui-btn-outlined mui-hidden" href="ruzhi-wdll-grzl" id="li-ji-ru-zhi" style="border: 1px solid rgba(255,255,255,.3);color: #fff;">立即入职</a>-->
+					<div id="slider" class="mui-slider">
+						<div class="mui-slider-group">
+							<!-- 第一张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="images/fortune-b1.jpg" />
+								</a> 
+							</div> 
+							<!-- 第二张 -->
+							<div class="mui-slider-item"> 
+								<a href="#"> 
+									<img src="images/fortune-b2.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+					
+					<img src="images/fortune-info.png" width="100%" style="margin-top: 10px;" />
+					
+					<!--工资积分-->
+					<ul class="mui-table-view mui-grid-view mui-grid-9 score-wrap mui-hidden" id="dai-fa" > 
+						
+						<li class="mui-col-xs-6 mui-table-view-cell mui-media">
+							<a href="score-xjgz">
+								<i class="iconfont icon-icon_xianjin"></i>
+								<span id="xian-jin-gong-zi">0.00</span>
+								<p>现金工资</p>
+							</a>
+						</li>
+						<li class="mui-col-xs-6 mui-table-view-cell mui-media">
+							<a href="score-maifen">
+								<i class="iconfont icon-jifen"></i>
+								<span id="mai-fen">0.00</span>
+								<p>福利麦分</p>
+							</a>
+						</li>
+						<li class="mui-col-xs-6 mui-table-view-cell mui-media">
+							<a href="score-zsjf">
+								<i class="iconfont icon-icon_keyong"></i>
+								<span id="zeng-song-ji-fen">0.00</span>
+								<p>可用福利券</p>
+							</a> 
+						</li>
+						<li class="mui-col-xs-6 mui-table-view-cell mui-media">
+							<a href="score-dzjf">
+								<i class="iconfont icon-icon_daizeng"></i>
+								<span id="dai-zeng-ji-fen">0.00</span>
+								<p>待赠福利券</p>
+							</a>
+						</li>
+					</ul>
+					<!--工资积分 end-->
+				</div>
+			</div>
+			
+		</div> 
+		<!--入职-->
+		<a class="button button-glow button-circle button-caution mui-hidden" href="ruzhi-wdll-grzl" id="li-ji-ru-zhi">立即入职</a>
+		<!--入职 end--> 
+		<nav class="mui-bar mui-bar-tab">     
+			<a class="mui-tab-item" href="index">
+				<span class="mui-icon icon iconfont icon-icon-test9"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active" href="fortune">
+				<span class="mui-icon icon iconfont icon-icon-test14"></span>
+				<span class="mui-tab-label">财富</span>
+			</a>
+			<a class="mui-tab-item" href="address">
+				<span class="mui-icon icon iconfont icon-icon-test11"></span>
+				<span class="mui-tab-label">商城</span>
+			</a>
+			<a class="mui-tab-item" href="setting">
+				<span class="mui-icon icon iconfont icon-icon-test15"></span> 
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+	</body>
+	<script>
+		var h5pullDown = true;
+	</script>
+	<script src="dist/js/mui.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>
+	
+	<!--<script src="buildNew/fortune.js"></script>--> 
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh, 
+					auto: true,
+				}
+			}
+		});
+
+		var getInfo = function getInfo() {} //全局
+		
+		//下拉刷新
+		function pulldownRefresh() {
+			
+			setTimeout(function() {
+				var data1 = new getInfo();
+				data1.getData();
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+			}, 800);
+		}
+
+		mui.plusReady(function() {
+			
+			
+			if(plus.storage.getItem('token') != null) {
+				var login = plus.webview.getWebviewById('login');
+				if(login != null)
+					login.close();
+			}
+			
+			//获取首页数 据(全局)
+			getInfo.prototype.getData = function() {
+				
+				//未入职
+				if(plus.storage.getItem('role') == "0") {					
+					document.getElementById('li-ji-ru-zhi').setAttribute('class', 'button button-glow button-circle button-caution');
+				} else {
+					
+					document.getElementById('li-ji-ru-zhi').setAttribute('class', 'button button-glow button-circle button-caution mui-hidden');
+
+				}
+
+				var getInfoData = {
+					"token": plus.storage.getItem("token")
+				}
+
+				mui.ajax(apiUrl + 'employee/index', {
+
+					data: getInfoData,
+					type: 'post',
+					timeout: 10000,
+					success: function(data) {
+						
+						var data = JSON.parse(data);  
+						plus.storage.setItem('ruzhi-status', data.detail); 
+						
+						
+						
+						//入职状态 
+						if(data.detail == "离职") {
+//							document.getElementById('index-header-info').removeAttribute('class');
+							//							document.getElementById('li-ji-ru-zhi').setAttribute('href', 'ruzhi-wdll-grzl');
+							document.getElementById('li-ji-ru-zhi').setAttribute('class', 'button button-glow button-circle button-caution');
+							document.getElementById('li-ji-ru-zhi').innerHTML = '立即入职';
+						} else if(data.detail == "待入职") {
+
+//							document.getElementById('index-header-info').removeAttribute('class');
+							document.getElementById('li-ji-ru-zhi').setAttribute('class', 'button button-glow button-circle button-caution');
+
+							document.getElementById('li-ji-ru-zhi').innerHTML = '审核中';
+						} else {
+							plus.storage.setItem('ruzhi-status', '');
+						}
+
+						if(data.status == 1 && data.data != '') {
+
+							plus.storage.setItem('companyname', data.data.company_name);
+							plus.storage.setItem('zhi_wei', data.data.zhi_wei);
+							plus.storage.setItem("real_name", data.data.real_name);
+							plus.storage.setItem('serviceHotline', data.data.service_hotline)
+							//会员头像
+							plus.storage.setItem("users_image", data.data.users_image != null ? data.data.users_image : 'images/test-head.png');
+							
+
+							plus.storage.setItem('telephone_key', data.data.telephone_key);
+
+							//缓存登录第三方登录注册信息
+
+							if(data.data.platform) {
+								plus.storage.setItem('platform', JSON.stringify(data.data.platform));
+								plus.storage.setItem('if_reg', data.data.platform[0].if_reg.toString());
+								plus.storage.setItem('user_key', data.data.platform[0].user_key);
+							}
+
+							//用户福利券		
+							if(data.data.wage_int != null) {
+								$('#dai-fa').removeClass('mui-hidden'); 
+								document.getElementById('xian-jin-gong-zi').innerHTML = data.data.wage_int.have_int_num != null ? data.data.wage_int.have_int_num : '0';
+								document.getElementById('zeng-song-ji-fen').innerHTML = data.data.wage_int.already_int != null ? data.data.wage_int.already_int : '0';
+								document.getElementById('dai-zeng-ji-fen').innerHTML = data.data.wage_int.stay_back_int != null ? data.data.wage_int.stay_back_int : '0';
+								document.getElementById('mai-fen').innerHTML = data.data.wage_int.maifen != null ? data.data.wage_int.maifen : '0.00';
+							}
+						}
+						
+						
+						//APP自动更新
+						if(plus.os.name == 'iOS') {
+							var localVer = plus.runtime.version.replace(/\./g, '');
+			                      
+							$.ajax({
+			                    type:"get",
+			                    dataType:'json',
+			                    url:"https://itunes.apple.com/lookup?id=1195486419",//获取当前上架APPStore版本信息
+			                    data:{            
+			                        id:1195486419 //APP唯一标识ID
+			                    },
+			                    contentType:'application/x-www-form-urlencoded;charset=UTF-8',
+			                    success:function(data){
+			                    	
+			                        $.each(data, function(i,norms) {  
+			                               $.each(norms, function(key,value) {
+			                               var notes = value.releaseNotes
+			                              var storeVer = value.version.replace(/\./g, '');
+												if(localVer<storeVer){
+													mui.alert(notes,'新版本更新提示',function(){
+														 document.location.href="https://itunes.apple.com/cn/app/san-gu-hui/id1195486419?mt=8";
+													})
+												}
+			                            });
+			                        });        
+			                        return ;
+			                    }
+			                });
+			            }else{
+			
+							var localVer = plus.runtime.version.replace(/\./g, '');
+							mui.ajax(apiUrl + 'login/get_version', {
+								data: {},
+								type: 'post',
+								timeout: 10000,
+								success: function(data) {
+									
+									var data = JSON.parse(data);
+									if(data.status == 1) {
+										var storeVer = data.data.version.replace(/\./g, '');
+										if(localVer < storeVer) {
+											mui.confirm('发现新版本，确认更新', '版本更新提示', function(e) {
+												if(e.index == 1) {
+													var wgtWaiting = plus.nativeUI.showWaiting("开始下载",{
+														background: 'rgba(0,0,0,0.5)'
+													});
+													var wgtUrl = data.data.android_url;
+													var wgtOption = {
+														filename: "_doc/update/",
+														retry: 1
+													};
+													var task = plus.downloader.createDownload(wgtUrl, wgtOption, function(download, status) {
+														if(status == 200) {
+															wgtWaiting.setTitle("开始安装");
+															plus.runtime.install(download.filename, {}, function(wgtinfo) {
+																wgtWaiting.close();
+																mui.alert("更新完成，须重启应用！", function() {
+																	plus.runtime.restart();
+																});
+															}, function(error) {
+																wgtWaiting.close();
+																mui.alert("应用更新失败！\n" + error.message);
+															});
+														} else {
+															mui.alert("应用升级失败！");
+															wgtWaiting.close();
+														}
+													});
+													task.addEventListener("statechanged", function(download, status) {
+														switch(download.state) {
+															case 2:
+																wgtWaiting.setTitle("已连接到服务器");
+																break;
+															case 3:
+																var percent = download.downloadedSize / download.totalSize * 100;
+																wgtWaiting.setTitle("已下载 " + parseInt(percent) + "%");
+																break;
+															case 4:
+																wgtWaiting.setTitle("下载完成");
+																break;
+														}
+													});
+													task.start();
+												}
+												return;
+											})
+										}
+			
+									}
+			
+								}
+							})
+			            }
+						
+						
+						return false;
+					},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("玩命加载中...", {
+							background: 'rgba(0,0,0,0.5)'
+						});
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+					},
+					error: function(xhr, typeinfo) {
+						if(typeinfo == 'abort') {
+							mui.alert('连接不到网络，请检查您当前的网络设置');
+						} else {
+							mui.alert('参数错误' + typeinfo);
+						}
+					}
+				});
+
+			}
+			//选项卡  
+			mui('.mui-bar-tab').on('tap', 'a', function() {
+				var href = this.getAttribute('href');
+
+				
+				if(href == 'address') {
+					if(plus.storage.getItem('if_reg') == '1') {
+						href = 'shop';
+					} else {
+						href = 'authorize-login';
+					}
+				}
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: false,
+					show: {
+						autoShow: true,
+						aniShow: false
+					},
+					waiting: {
+						autoShow: true,
+						title: '玩命加载中...'
+					},
+				})
+			})
+			
+			//立即入职
+			mui(document).on('tap', '#li-ji-ru-zhi', function() {
+				var href = this.getAttribute('href');
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					waiting: {
+						autoShow: false,
+						title: '玩命加载中...'
+					},
+
+				})
+			})
+			
+			
+			//链接
+			mui('.mui-table-view').on('tap', 'a', function() {
+				var href = this.getAttribute('href');
+
+				if(href == 'setting-zwxx' && plus.storage.getItem('role') == "0") {
+					return false;
+				}
+
+				if(href == 'shop') {
+					if(plus.storage.getItem('if_reg') == '1') {
+						href = 'shop';
+					} else {
+						href = 'authorize-login';
+					}
+
+					mui.openWindow({
+
+						url: href + '.html',
+						id: href,
+						createNew: true,
+						show: {
+							autoShow: true,
+							aniShow: "slide-in-right"
+
+						},
+						waiting: {
+							autoShow: false,
+							title: '玩命加载中...'
+						},
+					})
+					return false;
+				}
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-right"
+					},
+					waiting: {
+						autoShow: false,
+						title: '玩命加载中...'
+					},
+
+				})
+			})
+
+			
+			//获取推送信息
+			if(plus.storage.getItem('getuiClientInfo') != 1) {
+				var system = 0;
+				if(plus.os.name == 'iOS') {
+					system = 1;
+				} else {
+					system = 2;
+				}
+
+				var getuiData = {
+					"token": plus.storage.getItem('token'),
+					"cid": plus.push.getClientInfo().clientid,
+					"device_token": plus.push.getClientInfo().token,
+					"system": system
+				}
+				
+				mui.ajax(apiUrl + 'app/get_device_token', {
+					data: getuiData,
+					type: 'post',
+					timeout: 10000,
+					success: function(data) {
+						
+						var data = JSON.parse(data);
+						if(data.status == 1) {
+
+							plus.storage.setItem('getuiClientInfo', '1')
+						}
+					}
+				});
+			}
+			//处理推送
+
+			if(plus.os.name == 'Android') {
+
+				plus.push.addEventListener("receive", function(msg) {
+
+					var data = JSON.parse(msg.payload)
+
+					if(data.type == 'gonggao' || data.type == 'zhidu') {
+						mui.confirm('您有一条新的消息', '慧人事', function(e) {
+							if(e.index == 1) {
+								var toUrl = ''
+								if(data.type == 'gonggao')
+									toUrl = 'setting-gonggao-detail';
+								else if(data.type == 'zhidu')
+									toUrl = 'setting-gzzd';
+
+								mui.openWindow({
+									url: toUrl + '.html',
+									id: toUrl,
+									createNew: true,
+									extras: {
+										noticeId: data.id
+									},
+									show: {
+										autoShow: true,
+										aniShow: "slide-in-right"
+									},
+									waiting: {
+										autoShow: false,
+										title: '玩命加载中...'
+									},
+
+								})
+							}
+						})
+					} else if(data.type == 'gongzitiao') {
+						mui.alert(data.title)
+					}
+				})
+
+			} else {
+
+				plus.push.addEventListener("receive", function(msg) {
+					if(msg.payload.type == 'gonggao' || msg.payload.type == 'zhidu') {
+						mui.confirm('您有一条新的消息', '慧人事', function(e) {
+
+							if(e.index == 1) {
+
+								var toUrl = ''
+								if(msg.payload.type == 'gonggao')
+									toUrl = 'setting-gonggao-detail';
+								else if(msg.payload.type == 'zhidu')
+									toUrl = 'setting-gzzd';
+
+								mui.openWindow({
+									url: toUrl + '.html',
+									id: toUrl,
+									createNew: true,
+									extras: {
+										noticeId: msg.payload.id
+									},
+									show: {
+										autoShow: true,
+										aniShow: "slide-in-right"
+									},
+									waiting: {
+										autoShow: false,
+										title: '玩命加载中...'
+									},
+
+								})
+							}
+							plus.push.clear();
+						})
+					} else if(msg.type == 'gongzhitiao') {
+						mui.alert(msg.payload.tile)
+					}
+				})
+
+				plus.push.addEventListener("click", function(msg) {
+					if(msg.payload.type == 'gonggao' || msg.payload.type == 'zhidu') {
+						var toUrl = ''
+						if(msg.payload.type == 'gonggao')
+							toUrl = 'setting-gonggao-detail';
+						else if(msg.payload.type == 'zhidu')
+							toUrl = 'setting-gzzd';
+
+						mui.openWindow({
+							url: toUrl + '.html',
+							id: toUrl,
+							createNew: true,
+							extras: {
+								noticeId: msg.payload.id
+							},
+							show: {
+								autoShow: true,
+								aniShow: "slide-in-right"
+							},
+							waiting: {
+								autoShow: false,
+								title: '玩命加载中...'
+							},
+
+						})
+						plus.push.clear();
+					} else if(msg.type == 'gongzhitiao') {
+						mui.alert(msg.payload.title);
+					}
+				})
+
+			}
+			
+		})
+	</script>
+
+</html>

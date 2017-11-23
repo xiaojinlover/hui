@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<style type="text/css">
+		
 			.autocompleter {
 				position: absolute;
 				z-index: 100;
@@ -122,6 +123,13 @@
 		<div class="mui-content">
 			<p class="mui-table-view-divider">请绑定您的银行卡</p>
 			<form class="mui-input-group">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" > 
+						<a href="bind-bank-list" class="mui-navigate-right">
+							<span style="width: 35%;display: inline-block;" class="text-999 size14">开户行</span><span class="text-666 size14" style="width: 65%;" id="bank-name">请选择</span>
+						</a>
+					</li>
+				</ul>
 				<div class="mui-input-row">
 					<label class="text-999">卡号</label>
 					<input type="text" name="cardnum" class="mui-input-clear" />
@@ -130,9 +138,12 @@
 					<label class="text-999">持卡人</label>
 					<input type="text" name="username" disabled="true" class="mui-input-clear"/>
 				</div>
-				<div class="mui-input-row" style="position: static;">					
-					<input type="text" name="bankname" placeholder="请输入您的开户行名称并点击选择" id="nope"/>
-				</div>
+				<!--<div class="mui-input-row" >					
+					<input type="hidden" name="bankname" placeholder="请输入您的开户行名称并点击选择" id="nope"/>
+				</div>-->
+				
+				
+				<input type="hidden" name="bankname" id="nope"/>
 				<input type="hidden" id="cmp_id" name="bankid" />
 				<input type="hidden" name="cardtype" />
 				<input type="hidden" id="cmp_name" name="bankname1" />
@@ -154,10 +165,148 @@
 	<script src="dist/js/mui.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/md5.js"></script>
-	<script src="js/jquery-2.1.1.js"></script>
-	<script src="js/jquery.autocompleter.js"></script>
-	<script src="buildNew/bind-bank-card.js"></script>
+	<script src="js/jquery-2.1.1.js"></script>	
+	<script></script>
 	<script>
-		
+		mui.init({
+			swipeBack: true //启用右滑关闭功能		
+		});
+
+		mui.plusReady(function() {
+			
+			
+			
+			function insertSelectBank(e){
+				
+				$('#bank-name').html(e.detail.bankName);
+				$("#cmp_id").val(e.detail.bankNum);
+				$("#cmp_name").val(e.detail.bankName);	
+				$("#nope").val(e.detail.bankName);
+				
+			}
+			window.addEventListener('insertSelectBank',insertSelectBank);
+			
+			
+			mui('.mui-table-view').on('tap', 'a', function(e) { 
+
+				var href = this.getAttribute('href');
+				
+				mui.openWindow({
+					url: href + '.html',
+					id: href,
+					createNew: true,
+					show: {
+						autoShow: true,
+						aniShow: "slide-in-bottom"
+					},
+					waiting: {
+						autoShow: true,
+						title: '拼命加载中...'
+					},
+
+				})
+				
+			})
+			
+			
+			document.forms[0].username.value = plus.storage.getItem('real_name');
+			
+			function getCardInfo(cardNum) {
+				var reg = /^[0-9]*$/;
+				if(cardNum==''||!reg.test(cardNum)){
+					return false;
+				}	
+				var getInfoData = {
+					"token":plus.storage.getItem('token'),
+					"cardnum":cardNum
+				}
+				mui.ajax(apiUrl + 'Usersint/check_bank', {
+					data: getInfoData,
+					type: 'post',
+					timeout: 10000,
+					success: function(data) {						
+						var data = JSON.parse(data);
+						if(data.status==1){
+							document.forms[0].cardtype.value = data.data.card_type;	
+							
+							//提交银行卡数据
+							if(document.forms[0].cardnum.value==''){
+								mui.alert('请输入您的卡号！');
+								return false;
+							}
+							if(document.forms[0].username.value==''){
+								mui.alert('请输入持卡人');
+								return false;
+							}
+							if(document.forms[0].cardtype.value==''){
+								mui.alert('请输入正确的银行卡号');
+								return false;
+							}
+							if(document.forms[0].bankname1.value==''||document.forms[0].bankid.value==''){
+								mui.alert('请完善您的银行卡名称信息')
+								return false;
+							}
+							
+							var sendInfoData = {
+								"token":plus.storage.getItem('token'),
+								"users_name":document.forms[0].username.value,
+								"card_num":document.forms[0].cardnum.value,
+								"bank_name":document.forms[0].bankname.value,
+								"bank_num":document.forms[0].bankid.value,
+								"card_type":document.forms[0].cardtype.value
+							}
+							
+							mui.ajax(apiUrl + 'Usersint/save_bank_card', {
+								data: sendInfoData,
+								type: 'post',
+								timeout: 10000,
+								success: function(data) {
+									var data = JSON.parse(data);
+									if(data.status == 1){
+										mui.alert('绑定成功！',function(){
+											var bankCardList = plus.webview.currentWebview().opener();
+											bankCardList.reload();
+										})
+									}else{
+										mui.alert(data.detail)
+									}
+								},
+								beforeSend: function() {
+									plus.nativeUI.showWaiting("玩命加载中...", {
+										background: "rgba(0,0,0,0.5)"
+									});
+								},
+								complete: function() {
+									plus.nativeUI.closeWaiting();
+								},
+								error: function(xhr, typeinfo) {
+									mui.alert("参数错误：" + typeinfo);
+								}
+							});
+							
+							
+							
+						}else{
+							document.forms[0].cardtype.value = '';
+							mui.alert('输入卡号不正确');
+						}
+					}
+				});
+				
+			};
+			
+//			document.forms[0].cardnum.oninput=function() {
+//				
+//			}
+			
+			//提交银行卡数据 
+			mui('.mui-content-padded').on('tap','.mui-btn-block',function(){				
+				getCardInfo(document.forms[0].cardnum.value);
+			})
+			
+			
+			
+
+		})
 	</script>
 </html>

@@ -8,27 +8,27 @@ mui.init({
 				"token":plus.storage.getItem('token')
 			}
 			
-			
+		document.getElementById('telephone_key').innerHTML = plus.storage.getItem('serviceHotline')
 		//链接
 		mui('.mui-table-view-cell-sub').on('tap', 'a', function(e) {
 
 			var href = this.getAttribute('href');
 			if(href=='tel'){
-                plus.device.dial('4006266650', false);
+                plus.device.dial(plus.storage.getItem('serviceHotline'), false);
                 return false;
 			}
 			if(href=='#'){
 				if(plus.os.name=='iOS'){
 					var UIPasteboard  = plus.ios.importClass("UIPasteboard");					
 					var generalPasteboard = UIPasteboard.generalPasteboard();					
-					generalPasteboard.setValueforPasteboardType("huirenshiyun", "public.utf8-plain-text");
+					generalPasteboard.setValueforPasteboardType("maizhics", "public.utf8-plain-text");
 					var value = generalPasteboard.valueForPasteboardType("public.utf8-plain-text");
 					mui.alert('已复制公众号账号，请打开微信进行粘贴！')
 				}else{
 					var Context = plus.android.importClass("android.content.Context");
 					var main = plus.android.runtimeMainActivity();
 					var clip = main.getSystemService(Context.CLIPBOARD_SERVICE);
-					plus.android.invoke(clip,"setText","huirenshiyun");
+					plus.android.invoke(clip,"setText","maizhics");
 					mui.alert('已复制公众号账号，请打开微信进行粘贴！'); 
 				}
 				return false;

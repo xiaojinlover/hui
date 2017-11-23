@@ -12,7 +12,7 @@ mui.init({
 					"token":plus.storage.getItem('token'),
 					"users_bank_card_id":cardId
 				}
-				mui.confirm('确定解绑此银行卡？', function(e) {
+				mui.confirm('确定解绑此银行卡？', '',['否', '是'],function(e) { 
 					if (e.index == 0) {
 						return false;
 					} else {

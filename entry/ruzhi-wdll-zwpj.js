@@ -135,8 +135,8 @@ mui.init({
 							closeWebvie()
 							document.activeElement.blur();
 							mui.openWindow({
-								url: 'index.html',
-								id: 'index',
+								url: 'fortune.html',
+								id: 'fortune',
 								createNew: true,
 								show: {
 									autoShow: true,
@@ -165,7 +165,7 @@ mui.init({
 					
 				}else{
 					mui.confirm('是否确定取消入职',function(e){
-						if(e.index==0){
+						if(e.index==1){
 							var cancelLizhiData = {
 								"token":plus.storage.getItem('token')
 							}
@@ -181,8 +181,8 @@ mui.init({
 											closeWebvie();
 											document.activeElement.blur();
 											mui.openWindow({
-												url: 'index.html',
-												id: 'index',
+												url: 'fortune.html',
+												id: 'fortune',
 												createNew: true,
 												show: {
 													autoShow: true,
@@ -238,7 +238,7 @@ mui.init({
  
 				},
 				beforeSend: function() {
-					plus.nativeUI.showWaiting("头像上传中...");
+					plus.nativeUI.showWaiting("上传中...");
 				},
 				complete: function() {
 					plus.nativeUI.closeWaiting();

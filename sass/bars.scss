@@ -15,7 +15,6 @@
     -webkit-backface-visibility: hidden; // Make sure the bar is visible when a modal animates in.
     backface-visibility: hidden;
 }
-
 //fixed by fxy
 .#{$namespace}bar {
     .#{$namespace}title {

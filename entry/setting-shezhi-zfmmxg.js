@@ -78,7 +78,7 @@ mui.init({
 						var data = JSON.parse(data);
 						if(data.status == 1) {
 							mui.alert(data.detail, function() {
-								document.forms[0].reset();
+								mui.back();							
 							});
 						} else {
 							mui.alert(data.detail);
