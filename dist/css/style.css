@@ -89,22 +89,12 @@ body#setting-boss {
 }
 
 #register {
-  background: linear-gradient(225deg, #ff7150 0%, #f2595e 100%);
-}
-#register .mui-bar {
-  -webkit-box-shadow: none;
-  background: none;
-  border: none;
-  box-shadow: none;
-}
-#register .mui-bar .icon-guanbi {
-  color: #fff;
-  font-size: 30px;
-  margin: 20px 10px 0 0;
+  height: 100%;
 }
 #register .mui-content {
+  height: 100%;
+  background: #fff;
   padding-top: 25%;
-  background: none;
 }
 #register .mui-content .icon-guanbi {
   font-size: 20px;
@@ -119,28 +109,26 @@ body#setting-boss {
 #register .mui-content .mui-content-padded .mui-btn-outlined {
   color: #fff;
 }
-#register .mui-content .mui-content-padded > .mui-input-group {
-  background: none;
-}
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row::after {
-  background-color: rgba(255, 255, 255, 0.6) !important;
+  background-color: #bbb !important;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .btn-register:active {
-  background: #f2595e;
+  background: #fff;
   color: #fff;
+  border: 1px solid #fb6856;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .btn-register:focus {
-  background: #f2595e;
+  background: #fff;
   color: #fff;
+  border: 1px solid #fb6856;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .link-area {
-  color: #fff;
+  color: #666;
   padding: 5% 0 5% 0;
   font-size: 15px;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .link-area a {
   text-align: center;
-  color: #86f269;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row::after {
   left: 0;
@@ -154,32 +142,27 @@ body#setting-boss {
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row label i {
   font-size: 24px;
   line-height: 20px;
-  color: #fff;
+  color: #999;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row .code {
   position: absolute;
   right: 0;
   top: 5px;
   border-radius: 10px;
-  color: #fff;
+  color: #666;
   padding: 5px 5px;
   font-size: 12px;
   line-height: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid #999;
   background: none;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row input {
-  color: #fff;
+  color: #666;
   width: 80%;
+  font-size: 16px;
 }
 #register .mui-content .mui-content-padded > .mui-input-group .mui-input-row .mui-icon-clear::before {
-  color: rgba(255, 255, 255, 0.8);
-}
-#register .mui-content .mui-content-padded > .mui-input-group .mui-input-row input::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-#register .mui-content .mui-content-padded > .mui-input-group .mui-input-row input:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: #fb6856;
 }
 #register .mui-content .mui-content-padded > .mui-input-group:before {
   height: 0;

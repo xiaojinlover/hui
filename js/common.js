@@ -64,9 +64,10 @@ function html_clean(str) {
 
 mui.plusReady(function() {
 	//系统状态栏
-	plus.navigator.setStatusBarBackground("#f2595e");
-	plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
-//		alert(plus.navigator.getStatusbarHeight())
+//              alert(plus.navigator.isImmersedStatusbar())
+//    plus.navigator.setStatusBarBackground("#f2595e");
+//    plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
+//        alert(plus.navigator.getStatusbarHeight())
 	//	alert(plus.webview.getWebviewById('login'))
 	//判断登录状态(通过Token,去除不需要判断的页面)
 	var username = plus.storage.getItem("username");
@@ -96,13 +97,13 @@ mui.plusReady(function() {
 			}
 		})
 	}
-//	if(plus.webview.currentWebview().id=='login')
-//		return false;
-	
+
+	plus.webview.currentWebview().setStyle( {statusbar:{background:'#fff'},top:-plus.navigator.getStatusbarHeight(),bottom: 0} );
 })
 
 (function(w) {
 		document.addEventListener('plusready', function() {
+                                 
 	//		console.log("Immersed-UserAgent: " + navigator.userAgent);
 		}, false);
 	
@@ -119,13 +120,13 @@ mui.plusReady(function() {
 		var t = document.getElementsByTagName('header')[0];
 		//t&&(t.style.paddingTop=immersed+'px',t.style.background='-webkit-linear-gradient(top,rgba(215,75,40,1),rgba(215,75,40,0.8))',t.style.color='#FFF');
 		t && (t.style.paddingTop = immersed + 'px', t.style.background = '#f2595e', t.style.color = '#259cef');
-		t = document.getElementById('content');
-		t && (t.style.marginTop = immersed + 'px');
-		t = document.getElementById('scontent');
-		t && (t.style.marginTop = immersed + 'px');
-		t = document.getElementById('dcontent');
-		t && (t.style.marginTop = immersed + 'px');
-		t = document.getElementById('map');
-		t && (t.style.marginTop = immersed + 'px');
+ t = document.getElementById('content');
+ t && (t.style.marginTop = immersed + 'px');
+ t = document.getElementById('scontent');
+ t && (t.style.marginTop = immersed + 'px');
+ t = document.getElementById('dcontent');
+ t && (t.style.marginTop = immersed + 'px');
+ t = document.getElementById('map');
+ t && (t.style.marginTop = immersed + 'px');
 	
 	})(window);
