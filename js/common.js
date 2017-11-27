@@ -66,7 +66,7 @@ mui.plusReady(function() {
 	//系统状态栏
 //              alert(plus.navigator.isImmersedStatusbar())
 //    plus.navigator.setStatusBarBackground("#f2595e");
-//    plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
+      plus.navigator.setStatusBarStyle("UIStatusBarStyleBlackOpaque");
 //        alert(plus.navigator.getStatusbarHeight())
 	//	alert(plus.webview.getWebviewById('login'))
 	//判断登录状态(通过Token,去除不需要判断的页面)

@@ -1,219 +1,225 @@
 {
-	"index.html": {
-		"resources": [
-			"images/index-icon-kqjl.png",
-			"images/icon-ygjq.png",
-			"dist/js/mui.js",
-			"images/index-icon-shop.png",
-			"images/index-icon-jqsq.png",
-			"images/index-icon-bmkq.png",
-			"images/icon-gskq.png",
-			"dist/css/style.css",
-			"images/index-icon-gzzd.png",
-			"js/GeoUtils.js",
-			"images/index-icon-fxyj.png",
-			"images/index-icon-jqsp.png",
-			"js/common.js",
-			"images/test-head.png",
-			"js/baiduMaps.js",
-			"images/index-icon-gonggao.png",
-			"css/iconfont.css",
-			"buildNew/index.js",
-			"css/iconfont.woff",
-			"images/index-icon-jqcx.png",
-			"images/index-icon-daili.png",
-			"dist/css/mui.css",
-			"dist/fonts/mui.ttf",
-			"images/index-icon-kuaishebao.png"
-		],
-		"refer": [
-			"address.html",
-			"setting.html",
-			"daili.html",
-			"index-boss.html",
-			"score-xjgz.html",
-			"shop.html",
-			"login.html",
-			"setting-gzzd.html",
-			"setting-gonggao.html",
-			"authorize-login.html",
-			"setting-zwxx.html",
-			"fortune.html",
-			"licai.html",
-			"score-maifen.html"
-		]
-	},
-	"address.html": {
-		"resources": [
-			"buildNew/address.js",
-			"css/mui.indexedlist.css",
-			"js/mui.indexedlist.js"
-		],
-		"refer": []
-	},
-	"setting.html": {
-		"resources": [
-			"js/exif.js",
-			"js/mui.zoom.js",
-			"buildNew/setting.js",
-			"js/mui.previewimage.js",
-			"images/logo-white.png"
-		],
-		"refer": [
-			"index.html",
-			"setting-shezhi.html",
-			"setting-wdll-grzl.html",
-			"authorize-login.html"
-		]
-	},
-	"daili.html": {
-		"resources": [
-			"css/buttons.css"
-		],
-		"refer": []
-	},
-	"index-boss.html": {
-		"resources": [
-			"buildNew/index-boss.js",
-			"images/icon-ygtj.png",
-			"images/icon-fxyj.png",
-			"images/icon-kqjl.png",
-			"images/icon-rgcb.png"
-		],
-		"refer": [
-			"index-boss-ygtj.html"
-		]
-	},
-	"index-boss-ygtj.html": {
-		"resources": [
-			"buildNew/index-boss-ygtj.js"
-		],
-		"refer": []
-	},
-	"score-xjgz.html": {
-		"resources": [
-			"images/score-cash.png",
-			"css/buttons.css",
-			"examples/hello-mui/fonts/mui-icons-extra.ttf",
-			"examples/hello-mui/css/icons-extra.css",
-			"buildNew/score-xjgz.js",
-			"js/md5.js",
-			"js/common.js",
-			"dist/js/mui.js",
-			"css/iconfont.css",
-			"dist/css/style.css",
-			"css/iconfont.woff",
-			"dist/css/mui.css",
-			"dist/fonts/mui.ttf"
-		],
-		"refer": [
-			"bank-card-list.html"
-		]
-	},
-	"login.html": {
-		"resources": [
-			"images/logo.png",
-			"js/jquery-2.1.1.js",
-			"buildNew/login.js",
-			"js/common.js",
-			"dist/js/mui.js",
-			"css/iconfont.css",
-			"dist/css/style.css",
-			"css/iconfont.woff",
-			"dist/css/mui.css",
-			"dist/fonts/mui.ttf"
-		],
-		"refer": [
-			"index.html",
-			"register.html"
-		]
-	},
-	"setting-shezhi.html": {
-		"resources": [
-			"buildNew/setting-shezhi.js"
-		],
-		"refer": [
-			"login.html"
-		]
-	},
-	"shop.html": {
-		"resources": [
-			"js/common.js",
-			"dist/js/mui.js",
-			"css/iconfont.css",
-			"dist/css/style.css",
-			"dist/css/mui.css",
-			"dist/fonts/mui.ttf"
-		],
-		"refer": []
-	},
-	"register.html": {
-		"resources": [
-			"buildNew/register.js",
-			"js/md5.js",
-			"js/common.js",
-			"dist/js/mui.js",
-			"css/iconfont.css",
-			"dist/css/style.css",
-			"css/iconfont.woff",
-			"dist/css/mui.css"
-		],
-		"refer": []
-	},
-	"setting-gzt-detail.html": {
-		"resources": [
-			"buildNew/setting-gzt-detail.js"
-		],
-		"refer": []
-	},
-	"setting-gzzd.html": {
-		"resources": [
-			"js/common.js",
-			"dist/js/mui.js",
-			"css/iconfont.css",
-			"dist/css/style.css",
-			"buildNew/setting-gzzd.js",
-			"dist/css/mui.css",
-			"dist/fonts/mui.ttf"
-		],
-		"refer": []
-	},
-	"setting-gonggao.html": {
-		"resources": [
-			"buildNew/setting-gonggao.js"
-		],
-		"refer": []
-	},
-	"setting-zwxx.html": {
-		"refer": [
-			"setting-lzxx.html"
-		],
-		"resources": []
-	},
-	"fortune.html": {
-		"refer": [
-			"setting.html",
-			"setting-gzzd.html",
-			"authorize-login.html",
-			"setting-zwxx.html",
-			"index.html",
-			"score-xjgz.html",
-			"score-maifen.html"
-		],
-		"resources": []
-	},
-	"bank-card-list.html": {
-		"refer": [
-			"bank-card-delet.html",
-			"bind-bank-card.html"
-		],
-		"resources": []
-	},
-	"score-maifen.html": {
-		"refer": [
-			"score-maifen-mingxi.html",
-			"bank-card-list.html"
-		],
-		"resources": []
-	}
+  "index.html": {
+    "resources": [
+      "images/index-icon-kqjl.png",
+      "images/icon-ygjq.png",
+      "dist/js/mui.js",
+      "images/index-icon-shop.png",
+      "images/index-icon-jqsq.png",
+      "images/index-icon-bmkq.png",
+      "images/icon-gskq.png",
+      "dist/css/style.css",
+      "images/index-icon-gzzd.png",
+      "js/GeoUtils.js",
+      "images/index-icon-fxyj.png",
+      "images/index-icon-jqsp.png",
+      "js/common.js",
+      "images/test-head.png",
+      "js/baiduMaps.js",
+      "images/index-icon-gonggao.png",
+      "css/iconfont.css",
+      "buildNew/index.js",
+      "css/iconfont.woff",
+      "images/index-icon-jqcx.png",
+      "images/index-icon-daili.png",
+      "dist/css/mui.css",
+      "dist/fonts/mui.ttf",
+      "images/index-icon-kuaishebao.png"
+    ],
+    "refer": [
+      "address.html",
+      "setting.html",
+      "daili.html",
+      "index-boss.html",
+      "score-xjgz.html",
+      "shop.html",
+      "login.html",
+      "setting-gzzd.html",
+      "setting-gonggao.html",
+      "authorize-login.html",
+      "setting-zwxx.html",
+      "fortune.html",
+      "licai.html",
+      "score-maifen.html",
+      "geshuijsq.html"
+    ]
+  },
+  "address.html": {
+    "resources": [
+      "buildNew/address.js",
+      "css/mui.indexedlist.css",
+      "js/mui.indexedlist.js"
+    ],
+    "refer": []
+  },
+  "setting.html": {
+    "resources": [
+      "js/exif.js",
+      "js/mui.zoom.js",
+      "buildNew/setting.js",
+      "js/mui.previewimage.js",
+      "images/logo-white.png"
+    ],
+    "refer": [
+      "index.html",
+      "setting-shezhi.html",
+      "setting-wdll-grzl.html",
+      "authorize-login.html"
+    ]
+  },
+  "daili.html": {
+    "resources": [
+      "css/buttons.css"
+    ],
+    "refer": []
+  },
+  "index-boss.html": {
+    "resources": [
+      "buildNew/index-boss.js",
+      "images/icon-ygtj.png",
+      "images/icon-fxyj.png",
+      "images/icon-kqjl.png",
+      "images/icon-rgcb.png"
+    ],
+    "refer": [
+      "index-boss-ygtj.html"
+    ]
+  },
+  "index-boss-ygtj.html": {
+    "resources": [
+      "buildNew/index-boss-ygtj.js"
+    ],
+    "refer": []
+  },
+  "score-xjgz.html": {
+    "resources": [
+      "images/score-cash.png",
+      "css/buttons.css",
+      "examples/hello-mui/fonts/mui-icons-extra.ttf",
+      "examples/hello-mui/css/icons-extra.css",
+      "buildNew/score-xjgz.js",
+      "js/md5.js",
+      "js/common.js",
+      "dist/js/mui.js",
+      "css/iconfont.css",
+      "dist/css/style.css",
+      "css/iconfont.woff",
+      "dist/css/mui.css",
+      "dist/fonts/mui.ttf"
+    ],
+    "refer": [
+      "bank-card-list.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "images/logo.png",
+      "js/jquery-2.1.1.js",
+      "buildNew/login.js",
+      "js/common.js",
+      "dist/js/mui.js",
+      "css/iconfont.css",
+      "dist/css/style.css",
+      "css/iconfont.woff",
+      "dist/css/mui.css",
+      "dist/fonts/mui.ttf"
+    ],
+    "refer": [
+      "index.html",
+      "register.html"
+    ]
+  },
+  "setting-shezhi.html": {
+    "resources": [
+      "buildNew/setting-shezhi.js"
+    ],
+    "refer": [
+      "login.html"
+    ]
+  },
+  "shop.html": {
+    "resources": [
+      "js/common.js",
+      "dist/js/mui.js",
+      "css/iconfont.css",
+      "dist/css/style.css",
+      "dist/css/mui.css",
+      "dist/fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "register.html": {
+    "resources": [
+      "buildNew/register.js",
+      "js/md5.js",
+      "js/common.js",
+      "dist/js/mui.js",
+      "css/iconfont.css",
+      "dist/css/style.css",
+      "css/iconfont.woff",
+      "dist/css/mui.css"
+    ],
+    "refer": []
+  },
+  "setting-gzt-detail.html": {
+    "resources": [
+      "buildNew/setting-gzt-detail.js"
+    ],
+    "refer": []
+  },
+  "setting-gzzd.html": {
+    "resources": [
+      "js/common.js",
+      "dist/js/mui.js",
+      "css/iconfont.css",
+      "dist/css/style.css",
+      "buildNew/setting-gzzd.js",
+      "dist/css/mui.css",
+      "dist/fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "setting-gonggao.html": {
+    "resources": [
+      "buildNew/setting-gonggao.js"
+    ],
+    "refer": []
+  },
+  "setting-zwxx.html": {
+    "refer": [
+      "setting-lzxx.html"
+    ],
+    "resources": []
+  },
+  "fortune.html": {
+    "refer": [
+      "setting.html",
+      "setting-gzzd.html",
+      "authorize-login.html",
+      "setting-zwxx.html",
+      "index.html",
+      "score-xjgz.html",
+      "score-maifen.html"
+    ],
+    "resources": []
+  },
+  "bank-card-list.html": {
+    "refer": [
+      "bank-card-delet.html",
+      "bind-bank-card.html"
+    ],
+    "resources": []
+  },
+  "score-maifen.html": {
+    "refer": [
+      "score-maifen-mingxi.html",
+      "bank-card-list.html"
+    ],
+    "resources": []
+  },
+  "geshuijsq.html": {
+    "refer": [
+      "login.html"
+    ]
+  }
 }

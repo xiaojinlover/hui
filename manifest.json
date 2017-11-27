@@ -383,7 +383,8 @@
 					"score-zsjf.html",
 					"fortune.html",
 					"licai.html",
-					"score-maifen.html"
+					"score-maifen.html",
+					"geshuijsq.html"
 				],
 				"priority": 0
 			},
@@ -2373,6 +2374,13 @@
 				"refer": [
 					"score-maifen-mingxi.html",
 					"bank-card-list.html"
+				],
+				"priority": 0
+			},
+			"geshuijsq.html": {
+				"resources": [],
+				"refer": [
+					"login.html"
 				],
 				"priority": 0
 			}
